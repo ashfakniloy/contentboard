@@ -1,0 +1,92 @@
+.tiptap-toolbar {
+  @apply z-10 flex flex-wrap items-center gap-1 p-2 rounded-t-md;
+}
+
+.tiptap-toolbar button {
+  @apply hover:bg-gray-200 px-1 min-w-[30px] h-[28px] flex justify-center items-center rounded disabled:opacity-50 disabled:hover:!bg-transparent;
+}
+
+.tiptap-toolbar .is-active {
+  @apply bg-gray-300 hover:bg-gray-300;
+}
+
+.ProseMirror {
+  @apply p-2 h-[600px] max-w-full overflow-y-auto outline-none rounded-md rounded-t-none border border-t-0 border-gray-300 focus:border-primary scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-200;
+}
+
+.ProseMirror > * + * {
+  /* @apply mt-4; */
+  @apply pt-4;
+}
+
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3,
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6 {
+  @apply leading-[1.1];
+}
+
+.ProseMirror > h1 {
+  @apply text-[32px] font-bold;
+}
+.ProseMirror > h2 {
+  @apply text-[24px] font-bold;
+}
+.ProseMirror > h3 {
+  @apply text-[20.8px] font-bold;
+}
+.ProseMirror > h4 {
+  @apply text-[16px] font-bold;
+}
+.ProseMirror > h5 {
+  @apply text-[12.8px] font-bold;
+}
+.ProseMirror > h6 {
+  @apply text-[11.2px] font-bold;
+}
+
+.ProseMirror > p {
+  @apply text-base;
+}
+
+.ProseMirror > ul {
+  @apply ml-5 list-disc;
+}
+.ProseMirror > ol {
+  @apply ml-5 list-decimal;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+  @apply px-4 py-0;
+}
+
+.ProseMirror code {
+  @apply bg-transparent;
+}
+
+.ProseMirror pre {
+  @apply bg-[#0d0d0d] text-white font-["JetBrainsMono",monospace] py-3 px-4 rounded-lg overflow-x-auto;
+}
+
+.ProseMirror pre code {
+  @apply text-sm text-inherit text-yellow-200;
+}
+
+.ProseMirror img {
+  @apply h-auto max-w-full inline;
+}
+
+.ProseMirror a {
+  @apply text-blue-600 underline hover:text-blue-400 transition-colors duration-200;
+}
+
+.ProseMirror blockquote {
+  @apply pl-4 border-l-2 border-[#9c9c9c];
+}
+
+.ProseMirror hr {
+  @apply my-8 border-t border-gray-400;
+}
