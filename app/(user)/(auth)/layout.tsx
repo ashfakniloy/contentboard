@@ -12,7 +12,7 @@ export default function UserAuthLayout({
           <div className="ml-[20%]">
             <ContentBoardLogo className="w-[400px]" />
             <p className="mt-1 mr-1 text-primary font-medium text-end text-[16px] italic">
-              Write <b>blogs</b> and manage <b>message</b> for your website
+              Write <b>blogs</b> and manage <b>contact</b> for your website
             </p>
           </div>
         </div>

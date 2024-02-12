@@ -53,7 +53,7 @@ export default async function EndPoints() {
         <p className="text-2xl font-bold mb-2">Blog Styling</p>
         <CssAlert
           title="CSS"
-          path={`${BASE_URL}/_next/static/css/488ef1a06c0ef557.css`}
+          path={`${BASE_URL}/_next/static/css/f4b2ee2f39e6b871.css`}
         />
       </div>
 

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: "Contentboard",
     template: `%s | Contentboard`,
   },
-  description: "Write blog articles and manage contact for your website.",
+  description: "Write blogs and manage contact for your website.",
 };
 
 export default function RootLayout({
