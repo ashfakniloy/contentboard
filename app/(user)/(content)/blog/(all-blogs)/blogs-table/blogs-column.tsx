@@ -1,13 +1,13 @@
 "use client";
 
+import type { Blog } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
-import { DataTableColumnHeader } from "../data-table-column-header";
-import { Category } from "@prisma/client";
-import { CategoryAction } from "../actions/category-action";
+import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
 import { ClientFormattedDate } from "@/components/formats/client-formatted-date";
+import { BlogAction } from "./blog-action";
 
-export const categoriesColumn: ColumnDef<Category>[] = [
+export const blogsColumn: ColumnDef<Blog>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -33,28 +33,41 @@ export const categoriesColumn: ColumnDef<Category>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "categoryName",
+    accessorKey: "title",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" manualSort />
+      <DataTableColumnHeader column={column} title="Title" manualSort />
+    ),
+    cell: ({ row }) => <div className="w-[400px]">{row.getValue("title")}</div>,
+  },
+  {
+    accessorKey: "author",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Author" manualSort />
+    ),
+    cell: ({ row }) => <div className="">{row.getValue("author")}</div>,
+  },
+  {
+    accessorKey: "metaDescription",
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title="Meta Description"
+        manualSort
+      />
     ),
     cell: ({ row }) => (
-      <div className="w-[400px]">{row.getValue("categoryName")}</div>
+      <div className="w-[400px]">{row.getValue("metaDescription")}</div>
     ),
   },
   {
-    accessorKey: "slug",
+    accessorKey: "published",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Slug" manualSort />
-    ),
-    cell: ({ row }) => <div className="w-[400px]">{row.getValue("slug")}</div>,
-  },
-  {
-    accessorKey: "description",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Description" manualSort />
+      <DataTableColumnHeader column={column} title="Status" manualSort />
     ),
     cell: ({ row }) => (
-      <div className="w-full">{row.getValue("description")}</div>
+      <div className="">
+        {row.getValue("published") ? "Published" : "Draft"}
+      </div>
     ),
   },
 
@@ -74,7 +87,7 @@ export const categoriesColumn: ColumnDef<Category>[] = [
     id: "actions",
     cell: ({ row }) => (
       <div className="">
-        <CategoryAction row={row} />
+        <BlogAction row={row} />
       </div>
     ),
   },

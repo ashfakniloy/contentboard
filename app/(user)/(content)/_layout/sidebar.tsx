@@ -1,15 +1,14 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { IconLogout } from "@/components/icons";
-import { navLinks } from "./navLinks";
+import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
+import { IconLogout } from "@/components/icons";
 import LogoUploadModal from "@/components/modals/logo-upload-modal";
 import ContentBoardLogo from "@/components/logo/content-board";
-import { MoonIcon } from "lucide-react";
 import DarkMode from "./dark-mode";
+import { navLinks } from "./navLinks";
 
 export default function UserSidebar({
   logoUrl,

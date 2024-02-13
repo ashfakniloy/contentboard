@@ -1,7 +1,10 @@
 "use client";
 
+import type { Category } from "@prisma/client";
+import { useState } from "react";
+import { toast } from "sonner";
 import { Row } from "@tanstack/react-table";
-import { MoreHorizontal, Trash, Eye, Edit } from "lucide-react";
+import { MoreHorizontal, Trash, Edit } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -10,30 +13,27 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
-import { toast } from "sonner";
-import { Message } from "@prisma/client";
 import { DeleteModal } from "@/components/modals/delete-modal";
-import { deleteMessage } from "@/db/user/mutations/delete-message";
-import { MessageModal } from "@/components/modals/message-modal";
+import { EditCategoryModal } from "@/components/modals/edit-category-modal";
+import { deleteCategory } from "@/db/user/mutations/delete-category";
 
-interface MessageAction<TData> {
+interface CategoryAction<TData> {
   row: Row<TData>;
 }
 
-export function MessageAction<TData>({ row }: MessageAction<TData>) {
-  const message = row.original as Message;
+export function CategoryAction<TData>({ row }: CategoryAction<TData>) {
+  const category = row.original as Category;
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const [showMessageModal, setShowMessageModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const handleDelete = async () => {
-    // console.log("delete id", message.id);
+    // console.log("delete id", category.id);
     setIsDeleting(true);
 
-    const result = await deleteMessage({ deleteId: message.id });
+    const result = await deleteCategory({ deleteId: category.id });
 
     console.log("result", result);
 
@@ -62,10 +62,11 @@ export function MessageAction<TData>({ row }: MessageAction<TData>) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
-          <DropdownMenuItem onClick={() => setShowMessageModal(true)}>
-            <Eye className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
-            View
+          <DropdownMenuItem onClick={() => setShowEditModal(true)}>
+            <Edit className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+            Edit
           </DropdownMenuItem>
+
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => setShowDeleteModal(true)}>
             <Trash className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
@@ -74,17 +75,17 @@ export function MessageAction<TData>({ row }: MessageAction<TData>) {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <MessageModal
-        showMessageModal={showMessageModal}
-        setShowMessageModal={setShowMessageModal}
-        message={message}
+      <EditCategoryModal
+        category={category}
+        showEditModal={showEditModal}
+        setShowEditModal={setShowEditModal}
       />
 
       <DeleteModal
-        key={message.id}
+        key={category.id}
         showDeleteModal={showDeleteModal}
         setShowDeleteModal={setShowDeleteModal}
-        title={`Do you want to delete this message from "${message.username}"?`}
+        title={`Do you want to delete "${category.categoryName}"?`}
         handleDelete={handleDelete}
         isPending={isDeleting}
       />

@@ -1,17 +1,17 @@
 "use client";
 
+import { useState } from "react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { signIn } from "next-auth/react";
 import { FormProvider, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { SigninProps, signinSchema } from "@/schemas/signin-schema";
+import { toast } from "sonner";
 import { EmailField } from "@/components/form-fields/email-field";
 import { PasswordField } from "@/components/form-fields/password-field";
 import { Button } from "@/components/ui/button";
-import { signIn } from "next-auth/react";
-import { toast } from "sonner";
-import { useSearchParams } from "next/navigation";
-import { useState } from "react";
 import { Spinner } from "@/components/spinner";
-import Link from "next/link";
+import { SigninProps, signinSchema } from "@/schemas/signin-schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function UserSigninForm() {
   // const router = useRouter();

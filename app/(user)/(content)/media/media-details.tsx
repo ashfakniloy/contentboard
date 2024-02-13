@@ -1,10 +1,8 @@
+import type { Media } from "@prisma/client";
 import { useRef, useState } from "react";
-
-import { getFormattedDate } from "@/utils/get-formatte-date";
-import { Media } from "@prisma/client";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import MediaForm from "./media-form";
 import MediaDelete from "./media-delete";
+import { getFormattedDate } from "@/utils/get-formatte-date";
 
 type ImageSize = {
   width: number;
@@ -18,20 +16,8 @@ export default function MediaDetails({
   selectedImage: Media;
   setSelectedImage: React.Dispatch<React.SetStateAction<Media | null>>;
 }) {
-  // const imageRef = useRef();
-  // const [imageSize, setImageSize] = useState(null);
-
-  // const [imageTitleState, setImageTitleState] = useState(
-  //   selectedImage.imageTitle
-  // );
-
-  // const handleImageLoad = () => {
-  //   const { naturalWidth, naturalHeight } = imageRef.current;
-  //   setImageSize({ width: naturalWidth, height: naturalHeight });
-  // };
-
-  const imageRef = useRef<HTMLImageElement>(null); // Provide a type for useRef
-  const [imageSize, setImageSize] = useState<ImageSize | null>(null); // Define type for imageSize state
+  const imageRef = useRef<HTMLImageElement>(null);
+  const [imageSize, setImageSize] = useState<ImageSize | null>(null);
   const [imageTitleState, setImageTitleState] = useState(
     selectedImage.imageTitle
   );
@@ -44,7 +30,6 @@ export default function MediaDetails({
   };
 
   return (
-    // <ScrollArea className="h-screen w-[400px] 2xl:w-[625px]">
     <div className="w-[400px] 2xl:w-[625px]">
       <div className="pt-4 p-5 2xl:p-7 border-b border-border">
         <div className="flex justify-between items-center">
@@ -81,9 +66,6 @@ export default function MediaDetails({
       <div className="p-5 2xl:p-7 pb-[140px] w-[80%]">
         <MediaForm
           key={selectedImage.id}
-          // id={selectedImage._id}
-          // imageTitle={selectedImage.imageTitle}
-          // altText={selectedImage.altText}
           selectedImage={selectedImage}
           setImageTitleState={setImageTitleState}
         />

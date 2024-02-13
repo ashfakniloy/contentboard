@@ -2,19 +2,19 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
+import { signOut } from "next-auth/react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signOut } from "next-auth/react";
+import { Button } from "@/components/ui/button";
+import { AlertDialog, AlertDialogContent } from "@/components/ui/alert-dialog";
 import { Spinner } from "@/components/spinner";
+import { PasswordField } from "@/components/form-fields/password-field";
+import { InputField } from "@/components/form-fields/input-field";
+import { deleteAccount } from "@/db/user/mutations/delete-account";
 import {
   DeleteAccountProps,
   deleteAccountSchema,
 } from "@/schemas/settings-schema";
-import { AlertDialog, AlertDialogContent } from "@/components/ui/alert-dialog";
-import { PasswordField } from "@/components/form-fields/password-field";
-import { InputField } from "@/components/form-fields/input-field";
-import { deleteAccount } from "@/db/user/mutations/delete-account";
 
 export default function AccountDelete() {
   const [showModal, setShowModal] = useState(false);
@@ -46,7 +46,7 @@ export default function AccountDelete() {
 
     const result = await deleteAccount({ values });
 
-    console.log("result", result);
+    // console.log("result", result);
 
     if (result.success) {
       signOut();

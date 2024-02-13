@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { Table } from "@tanstack/react-table";
 import {
   ChevronLeft,
@@ -5,7 +7,6 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -14,8 +15,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
 import { PER_PAGE } from "@/config";
 
 interface DataTablePaginationProps<TData> {

@@ -1,17 +1,17 @@
 "use client";
 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/spinner";
+import { UsernameField } from "@/components/form-fields/username-field";
 import { EmailField } from "@/components/form-fields/email-field";
 import { PasswordField } from "@/components/form-fields/password-field";
-import { useRouter } from "next/navigation";
-import { SignupProps, signupSchema } from "@/schemas/signup-schema";
 import { userSignup } from "@/db/user/mutations/user-signup";
-import Link from "next/link";
-import { UsernameField } from "@/components/form-fields/username-field";
+import { SignupProps, signupSchema } from "@/schemas/signup-schema";
 
 export default function UserSignupForm() {
   const router = useRouter();

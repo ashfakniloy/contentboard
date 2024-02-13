@@ -1,10 +1,10 @@
 "use client";
 
 import { toast } from "sonner";
-import { Check, Copy, Info, Server } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { Check, Copy, Info, Server } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 type Values = {
   name: string;

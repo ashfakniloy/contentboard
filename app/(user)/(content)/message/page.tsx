@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getAuthSession } from "@/lib/next-auth";
 import { getMessages } from "@/db/user/queries/get-messages";
 import { DataTable } from "@/components/data-table";
-import { messagesColumn } from "@/components/data-table/columns/messages-column";
+import { messagesColumn } from "./messages-table/messages-column";
 import { deleteMessage } from "@/db/user/mutations/delete-message";
 
 export const metadata: Metadata = {
@@ -14,11 +14,9 @@ export default async function MessagePage({
 }: {
   searchParams: SearchParams;
 }) {
-  // await new Promise((resolve) => setTimeout(resolve, 5000));
   const session = await getAuthSession();
 
   if (!session) return;
-
   const userId = session?.user.id;
 
   const limitNumber = Number(limit);
@@ -37,36 +35,30 @@ export default async function MessagePage({
     username: search,
   });
 
-  console.log("messagesCount", messagesCount);
+  // console.log("messagesCount", messagesCount);
 
-  // if (!categories.length) {
+  // if (!messages.length) {
   //   return (
   //     <p className="mt-20 text-xl text-center font-bold text-red-500">
-  //       No categories found
+  //       No messages found
   //     </p>
   //   );
   // }
 
   return (
-    <>
-      <div className="">
-        <p className="text-2xl font-bold my-5">All Messages</p>
+    <div className="">
+      <p className="text-2xl font-bold my-5">All Messages</p>
 
-        {messages && (
-          <DataTable
-            columns={messagesColumn}
-            data={messages}
-            searchBy="username"
-            count={messagesCount}
-            deleteAction={deleteMessage}
-            manualControl
-          />
-        )}
-
-        {/* <Suspense fallback={<SpinnerSuspense />}>
-          <Messagestable searchParams={searchParams} />
-        </Suspense> */}
-      </div>
-    </>
+      {messages && (
+        <DataTable
+          columns={messagesColumn}
+          data={messages}
+          searchBy="username"
+          count={messagesCount}
+          deleteAction={deleteMessage}
+          manualControl
+        />
+      )}
+    </div>
   );
 }

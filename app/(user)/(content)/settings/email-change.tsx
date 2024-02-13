@@ -1,25 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
+import { signOut } from "next-auth/react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 import { InputFieldLong } from "@/components/form-fields/input-field";
-import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { Spinner } from "@/components/spinner";
-import { EmailProps, emailSchema } from "@/schemas/settings-schema";
-import {
-  AlertDialog,
-  AlertDialogContent,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { PasswordField } from "@/components/form-fields/password-field";
-import ModalNoPortal from "@/components/modals/non-portal-modal";
 import NonPortalModal from "@/components/modals/non-portal-modal";
 import { changeEmail } from "@/db/user/mutations/change-email";
+import { EmailProps, emailSchema } from "@/schemas/settings-schema";
 
 export default function EmailChange({ email }: { email: string }) {
   const [isSelected, setIsSelected] = useState(false);
@@ -39,9 +31,8 @@ export default function EmailChange({ email }: { email: string }) {
     reset,
     watch,
     trigger,
-    formState: { isSubmitting },
     setError,
-
+    formState: { isSubmitting },
     resetField,
   } = form;
 
@@ -74,7 +65,7 @@ export default function EmailChange({ email }: { email: string }) {
 
     const result = await changeEmail({ values });
 
-    console.log("result", result);
+    // console.log("result", result);
 
     if (result.success) {
       signOut();
@@ -171,43 +162,6 @@ export default function EmailChange({ email }: { email: string }) {
             </div>
           </div>
         </NonPortalModal>
-
-        {/* <AlertDialog
-          open={showPasswordModal}
-          onOpenChange={setShowPasswordModal}
-        >
-          <AlertDialogContent className="bg-white w-[450px] p-9 flex flex-col items-center">
-            <div className=" flex-col items-center w-full">
-              <p className="text-xl font-medium text-center mb-7">
-                Enter your password to change email
-              </p>
-
-              <PasswordField name="password" label="Password" />
-
-              <div className="mt-7 flex justify-center gap-5">
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="lg"
-                  className="w-full"
-                  onClick={() => setShowPasswordModal(false)}
-                  disabled={isSubmitting}
-                >
-                  Cancel
-                </Button>
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full relative"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting && <Spinner className="absolute left-3.5" />}
-                  Submit
-                </Button>
-              </div>
-            </div>
-          </AlertDialogContent>
-        </AlertDialog> */}
       </form>
     </FormProvider>
   );

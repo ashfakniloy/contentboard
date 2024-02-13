@@ -3,8 +3,8 @@ import CategoryForm from "./category-form";
 import { getAuthSession } from "@/lib/next-auth";
 import { getCategories } from "@/db/user/queries/get-categories";
 import { DataTable } from "@/components/data-table";
-import { categoriesColumn } from "@/components/data-table/columns/categories-column";
 import { deleteCategory } from "@/db/user/mutations/delete-category";
+import { categoriesColumn } from "./categories-table/categories-column";
 
 export const metadata: Metadata = {
   title: "Categories",
@@ -15,7 +15,6 @@ export default async function CategoriesPage({
 }: {
   searchParams: SearchParams;
 }) {
-  // await new Promise((resolve) => setTimeout(resolve, 5000));
   const session = await getAuthSession();
 
   if (!session) return;

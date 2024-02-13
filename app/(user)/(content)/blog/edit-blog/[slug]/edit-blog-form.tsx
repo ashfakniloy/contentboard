@@ -1,21 +1,21 @@
 "use client";
 
+import type { Blog, Category } from "@prisma/client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import slugify from "slugify";
-import { CheckboxField } from "@/components/form-fields/checkbox-field";
-import { InputField } from "@/components/form-fields/input-field";
-import { Spinner } from "@/components/spinner";
-import ImageUploadModal from "@/components/modals/image-upload-modal";
-import { Button } from "@/components/ui/button";
-import { IconDraft, IconPaperPlus, IconSend, IconX } from "@/components/icons";
-import { Blog, Category } from "@prisma/client";
+import { useRouter } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { BlogProps, blogSchema } from "@/schemas/blog-schema";
-import { TextEditorField } from "@/components/form-fields/text-editor-field";
+import slugify from "slugify";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import { IconDraft, IconPaperPlus, IconSend, IconX } from "@/components/icons";
+import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/spinner";
+import { CheckboxField } from "@/components/form-fields/checkbox-field";
+import { InputField } from "@/components/form-fields/input-field";
+import { TextEditorField } from "@/components/form-fields/text-editor-field";
+import ImageUploadModal from "@/components/modals/image-upload-modal";
+import { BlogProps, blogSchema } from "@/schemas/blog-schema";
 import { editBlog } from "@/db/user/mutations/edit-blog";
 
 export default function EditBlogForm({
@@ -56,7 +56,7 @@ export default function EditBlogForm({
   const published = watch("published");
   const featuredImage = watch("featuredImage");
 
-  console.log("featuredImage", featuredImage);
+  // console.log("featuredImage", featuredImage);
 
   useEffect(() => {
     if (title) {
@@ -76,8 +76,6 @@ export default function EditBlogForm({
       toast.success(result.success);
 
       router.push("/blog");
-
-      // reset();
     } else if (result.error) {
       toast.error(result.error);
 

@@ -1,8 +1,8 @@
 "use client";
 
-import LogoUploadModal from "@/components/modals/logo-upload-modal";
-import { Edit } from "lucide-react";
 import Image from "next/image";
+import { Edit } from "lucide-react";
+import LogoUploadModal from "@/components/modals/logo-upload-modal";
 
 export default function LogoChange({ logoUrl }: { logoUrl: string | null }) {
   return (
@@ -20,19 +20,11 @@ export default function LogoChange({ logoUrl }: { logoUrl: string | null }) {
         )}
         <div className="absolute inset-x-0 bottom-0 top-1/2 bg-white/70"></div>
         <div className="absolute flex inset-x-0 bottom-2 justify-center items-center text-black">
-          {/* <ImageUploadModal
-          isLogo
-          showImageModal={showImageModal}
-          setShowImageModal={setShowImageModal}
-          handleImageSubmit={handleImageSubmit}
-          imageSubmitting={isPending}
-        > */}
           <LogoUploadModal>
             <span title="Change logo">
               <Edit />
             </span>
           </LogoUploadModal>
-          {/* </ImageUploadModal> */}
         </div>
       </div>
     </div>

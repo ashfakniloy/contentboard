@@ -1,22 +1,22 @@
 "use client";
 
+import type { Category } from "@prisma/client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { FormProvider, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import slugify from "slugify";
+import { toast } from "sonner";
+import { IconDraft, IconPaperPlus, IconSend, IconX } from "@/components/icons";
+import { Button } from "@/components/ui/button";
 import { CheckboxField } from "@/components/form-fields/checkbox-field";
 import { InputField } from "@/components/form-fields/input-field";
 import { Spinner } from "@/components/spinner";
 import ImageUploadModal from "@/components/modals/image-upload-modal";
-import { Button } from "@/components/ui/button";
-import { IconDraft, IconPaperPlus, IconSend, IconX } from "@/components/icons";
-import { Category } from "@prisma/client";
-import { FormProvider, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { BlogProps, blogSchema } from "@/schemas/blog-schema";
 import { TextEditorField } from "@/components/form-fields/text-editor-field";
 import { addBlog } from "@/db/user/mutations/add-blog";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import { BlogProps, blogSchema } from "@/schemas/blog-schema";
 import { getDescription } from "@/utils/get-description";
 
 export default function AddBlogForm({
@@ -75,14 +75,12 @@ export default function AddBlogForm({
 
     const result = await addBlog({ values });
 
-    console.log("result", result);
+    // console.log("result", result);
 
     if (result.success) {
       toast.success(result.success);
 
       router.push("/blog");
-
-      // reset();
     } else if (result.error) {
       toast.error(result.error);
 

@@ -1,10 +1,10 @@
+import type { Media } from "@prisma/client";
+import { useState } from "react";
+import { toast } from "sonner";
+import { Trash2 } from "lucide-react";
 import { DeleteModal } from "@/components/modals/delete-modal";
 import { Button } from "@/components/ui/button";
 import { deleteMedia } from "@/db/user/mutations/delete-media";
-import { Media } from "@prisma/client";
-import { Trash2 } from "lucide-react";
-import { useState } from "react";
-import { toast } from "sonner";
 
 export default function MediaDelete({
   imageTitleState,
@@ -24,7 +24,7 @@ export default function MediaDelete({
 
     const result = await deleteMedia({ mediaId: selectedImage.id });
 
-    console.log("result", result);
+    // console.log("result", result);
 
     if (result?.success) {
       toast.success(result.success);

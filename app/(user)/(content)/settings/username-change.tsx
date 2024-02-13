@@ -1,16 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UsernameProps, usernameSchema } from "@/schemas/settings-schema";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/spinner";
 import { InputFieldLong } from "@/components/form-fields/input-field";
 import { changeUsername } from "@/db/user/mutations/change-username";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { Spinner } from "@/components/spinner";
+import { UsernameProps, usernameSchema } from "@/schemas/settings-schema";
 
 export default function UsernameChange({ username }: { username: string }) {
   const [isSelected, setIsSelected] = useState(false);
@@ -31,9 +31,7 @@ export default function UsernameChange({ username }: { username: string }) {
 
   const {
     reset,
-    watch,
     formState: { isSubmitting },
-    setValue,
     setError,
   } = form;
 
@@ -42,7 +40,6 @@ export default function UsernameChange({ username }: { username: string }) {
     // return;
 
     if (values.username === nameState) {
-      // toast.error("Current and new username are same");
       setError(
         "username",
         { message: "Current and new username are same" },
@@ -53,7 +50,7 @@ export default function UsernameChange({ username }: { username: string }) {
 
     const result = await changeUsername({ values });
 
-    console.log("result", result);
+    // console.log("result", result);
 
     if (result.success) {
       toast.success(result.success);

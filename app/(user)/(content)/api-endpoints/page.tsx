@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { getAuthSession } from "@/lib/next-auth";
-import { BASE_URL } from "@/config";
 import ApiAlert from "@/components/alerts/api-alert";
 import CssAlert from "@/components/alerts/css-alert";
+import { BASE_URL } from "@/config";
 
 export const metadata: Metadata = {
   title: "API endpoints",

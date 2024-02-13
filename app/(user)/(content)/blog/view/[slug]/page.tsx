@@ -1,12 +1,11 @@
-import { ClientFormattedDate } from "@/components/formats/client-formatted-date";
-import { getSingleBlog } from "@/db/user/queries/get-single-blog";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import parser from "html-react-parser";
-import { getAuthSession } from "@/lib/next-auth";
-// import "@/components/text-editor/styles.css";
-import "@/public/styles/blog.css";
+import { ClientFormattedDate } from "@/components/formats/client-formatted-date";
 import BackButton from "@/components/back-button";
+import { getAuthSession } from "@/lib/next-auth";
+import { getSingleBlog } from "@/db/user/queries/get-single-blog";
+import "@/public/styles/blog.css";
 
 export default async function BlogViewpage({
   params: { slug },
@@ -65,8 +64,6 @@ export default async function BlogViewpage({
         <div className="mt-5 relative h-[280px] lg:h-[660px]">
           <Image
             src={blog.featuredImage.imageUrl}
-            // placeholder="blur"
-            // blurDataURL={blurDataURL}
             alt={blog.featuredImage.altText}
             title={blog.featuredImage.imageTitle}
             fill
@@ -75,7 +72,6 @@ export default async function BlogViewpage({
           />
         </div>
 
-        {/* <div className="mt-6 ProseMirror !border-none !p-0 !max-h-full overflow-hidden"> */}
         <div className="mt-6 ContentBoard">{parser(blog.body)}</div>
       </div>
     </div>

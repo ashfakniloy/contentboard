@@ -1,11 +1,11 @@
 "use client";
 
+import type { Message } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
-import { DataTableColumnHeader } from "../data-table-column-header";
-import { Message } from "@prisma/client";
+import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
 import { ClientFormattedDate } from "@/components/formats/client-formatted-date";
-import { MessageAction } from "../actions/message-action";
+import { MessageAction } from "./message-action";
 
 export const messagesColumn: ColumnDef<Message>[] = [
   {

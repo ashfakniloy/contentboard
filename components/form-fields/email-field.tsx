@@ -1,5 +1,5 @@
 import { useFormContext } from "react-hook-form";
-import { IconAtSymbol, IconPeople } from "../icons";
+import { IconAtSymbol } from "../icons";
 import { Input, InputProps } from "../ui/input";
 
 type EmailFieldProps = {
@@ -19,7 +19,6 @@ export function EmailField({ name, ...props }: EmailFieldProps) {
 
       <div className="relative mt-1">
         <div className="absolute inset-y-0 flex items-center left-3 text-gray-500">
-          {/* <IconPeople /> */}
           <IconAtSymbol />
         </div>
 

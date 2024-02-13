@@ -1,17 +1,17 @@
 "use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import slugify from "slugify";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/spinner";
-import slugify from "slugify";
 import { InputField } from "@/components/form-fields/input-field";
-import { CategoryProps, categorySchema } from "@/schemas/category-schema";
-import { addCategory } from "@/db/user/mutations/add-category";
 import { TextareaField } from "@/components/form-fields/textarea-field";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { addCategory } from "@/db/user/mutations/add-category";
+import { CategoryProps, categorySchema } from "@/schemas/category-schema";
 
 export default function CategoryForm() {
   const defaultValues = {
@@ -50,7 +50,7 @@ export default function CategoryForm() {
 
     const result = await addCategory({ values });
 
-    console.log("result", result);
+    // console.log("result", result);
 
     if (result.success) {
       toast.success(result.success);

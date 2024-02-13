@@ -1,17 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
+import { signOut } from "next-auth/react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signOut } from "next-auth/react";
-import { Spinner } from "@/components/spinner";
-import { PasswordProps, passwordSchema } from "@/schemas/settings-schema";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 import { AlertDialog, AlertDialogContent } from "@/components/ui/alert-dialog";
+import { Spinner } from "@/components/spinner";
 import { PasswordField } from "@/components/form-fields/password-field";
-
 import { changePassword } from "@/db/user/mutations/change-password";
+import { PasswordProps, passwordSchema } from "@/schemas/settings-schema";
 
 export default function PasswordChange() {
   const [showPasswordModal, setShowPasswordModal] = useState(false);
@@ -21,6 +20,7 @@ export default function PasswordChange() {
     newPassword: "",
     retypePassword: "",
   };
+
   const form = useForm<PasswordProps>({
     defaultValues,
     resolver: zodResolver(passwordSchema),
@@ -52,7 +52,7 @@ export default function PasswordChange() {
 
     const result = await changePassword({ values });
 
-    console.log("result", result);
+    // console.log("result", result);
 
     if (result.success) {
       signOut();

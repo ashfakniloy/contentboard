@@ -1,7 +1,10 @@
 "use client";
 
+import type { Message } from "@prisma/client";
+import { useState } from "react";
 import { Row } from "@tanstack/react-table";
-import { MoreHorizontal, Trash, Eye, Edit } from "lucide-react";
+import { toast } from "sonner";
+import { MoreHorizontal, Trash, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -10,28 +13,27 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
-import { toast } from "sonner";
-import { Blog } from "@prisma/client";
 import { DeleteModal } from "@/components/modals/delete-modal";
-import { deleteBlog } from "@/db/user/mutations/delete-blog";
-import Link from "next/link";
+import { MessageModal } from "@/components/modals/message-modal";
+import { deleteMessage } from "@/db/user/mutations/delete-message";
 
-interface BlogAction<TData> {
+interface MessageAction<TData> {
   row: Row<TData>;
 }
 
-export function BlogAction<TData>({ row }: BlogAction<TData>) {
-  const blog = row.original as Blog;
+export function MessageAction<TData>({ row }: MessageAction<TData>) {
+  const message = row.original as Message;
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
+  const [showMessageModal, setShowMessageModal] = useState(false);
+
   const handleDelete = async () => {
-    // console.log("delete id", category.id);
+    // console.log("delete id", message.id);
     setIsDeleting(true);
 
-    const result = await deleteBlog({ deleteId: blog.id });
+    const result = await deleteMessage({ deleteId: message.id });
 
     console.log("result", result);
 
@@ -60,22 +62,10 @@ export function BlogAction<TData>({ row }: BlogAction<TData>) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
-          <Link href={`/blog/view/${blog.slug}`}>
-            <DropdownMenuItem>
-              <Eye className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
-              View
-            </DropdownMenuItem>
-          </Link>
-
-          <DropdownMenuSeparator />
-
-          <Link href={`/blog/edit-blog/${blog.slug}`}>
-            <DropdownMenuItem>
-              <Edit className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
-              Edit
-            </DropdownMenuItem>
-          </Link>
-
+          <DropdownMenuItem onClick={() => setShowMessageModal(true)}>
+            <Eye className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+            View
+          </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => setShowDeleteModal(true)}>
             <Trash className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
@@ -84,11 +74,17 @@ export function BlogAction<TData>({ row }: BlogAction<TData>) {
         </DropdownMenuContent>
       </DropdownMenu>
 
+      <MessageModal
+        showMessageModal={showMessageModal}
+        setShowMessageModal={setShowMessageModal}
+        message={message}
+      />
+
       <DeleteModal
-        key={blog.id}
+        key={message.id}
         showDeleteModal={showDeleteModal}
         setShowDeleteModal={setShowDeleteModal}
-        title={`Do you want to delete "${blog.title}"?`}
+        title={`Do you want to delete this message from "${message.username}"?`}
         handleDelete={handleDelete}
         isPending={isDeleting}
       />

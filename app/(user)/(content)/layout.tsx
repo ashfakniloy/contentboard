@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { getAuthSession } from "@/lib/next-auth";
 import UserSidebar from "./_layout/sidebar";
-import Link from "next/link";
 
 export default async function UserLayout({
   children,
@@ -8,7 +8,6 @@ export default async function UserLayout({
   children: React.ReactNode;
 }) {
   const session = await getAuthSession();
-
   const logoUrl = session?.user.logoUrl;
   const username = session?.user.username;
   const isGuestUser = session?.user.role === "GUEST_USER";

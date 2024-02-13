@@ -1,8 +1,8 @@
 "use client";
 
-import { Switch } from "@/components/ui/switch";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { Switch } from "@/components/ui/switch";
 
 function DarkMode() {
   const [mounted, setMounted] = useState(false);

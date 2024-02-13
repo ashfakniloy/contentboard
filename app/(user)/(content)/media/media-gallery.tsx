@@ -1,19 +1,19 @@
 "use client";
 
+import type { Media } from "@prisma/client";
 import { useState } from "react";
-import { IconPaperPlus, IconTick } from "@/components/icons";
-import ImageUploadModal from "@/components/modals/image-upload-modal";
-import { Media } from "@prisma/client";
-import { MediaProps } from "@/schemas/media-schema";
 import Image from "next/image";
 import { toast } from "sonner";
-import MediaDetails from "./media-details";
-import { addMedia } from "@/db/user/mutations/add-media";
+import { Trash2, X } from "lucide-react";
+import { IconPaperPlus, IconTick } from "@/components/icons";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
+import ImageUploadModal from "@/components/modals/image-upload-modal";
+import MediaDetails from "./media-details";
 import { DeleteModal } from "@/components/modals/delete-modal";
-import { Trash2, X, XSquare } from "lucide-react";
+import { addMedia } from "@/db/user/mutations/add-media";
 import { deleteMedia } from "@/db/user/mutations/delete-media";
+import { MediaProps } from "@/schemas/media-schema";
 
 export default function MediaGallery({ medias }: { medias: Media[] }) {
   const [selectedImage, setSelectedImage] = useState<Media | null>(null);
@@ -29,11 +29,6 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
   const [imageSubmitting, setImageSubmitting] = useState(false);
 
   const handleImageClick = (media: Media) => {
-    // if (isMultipleSelect) {
-    //   toggleSelectedImage(media);
-    // } else {
-    //   setSelectedImage(media);
-    // }
     if (isMultipleSelect) {
       toggleSelectedImage(media);
     } else {

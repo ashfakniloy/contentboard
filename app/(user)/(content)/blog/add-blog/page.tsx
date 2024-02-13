@@ -16,8 +16,8 @@ export default async function AddBlogPage() {
   const { categories } = await getCategories({ userId });
 
   return (
-    <>
+    <div className="-mt-2 lg:-mt-7">
       <AddBlogForm categories={categories} />
-    </>
+    </div>
   );
 }

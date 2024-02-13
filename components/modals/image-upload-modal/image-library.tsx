@@ -6,7 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import type { Media } from "@prisma/client";
 import { MediaProps } from "@/schemas/media-schema";
 import useFetchData from "@/hooks/use-fetch-data";
-import { SpinnerSuspense } from "@/components/spinner";
+import { SpinnerContent } from "@/components/spinner";
 // import useGetData from "@/hooks/useGetData";
 // import { Spinner } from "@/components/spinner";
 
@@ -69,7 +69,7 @@ export default function ImageLibrary({
     <div>
       {isLoading ? (
         <div className="absolute w-full h-[70%] flex justify-center items-center">
-          <SpinnerSuspense />
+          <SpinnerContent />
         </div>
       ) : (
         <>

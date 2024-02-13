@@ -15,7 +15,7 @@ export const Spinner = ({ className }: { className?: string }) => {
   );
 };
 
-export const SpinnerPageLoading = ({ className }: { className?: string }) => {
+export const SpinnerPage = ({ className }: { className?: string }) => {
   return (
     <div className="h-[81.1vh] flex justify-center items-center">
       <span
@@ -30,7 +30,7 @@ export const SpinnerPageLoading = ({ className }: { className?: string }) => {
   );
 };
 
-export const SpinnerSuspense = ({ className }: { className?: string }) => {
+export const SpinnerContent = ({ className }: { className?: string }) => {
   return (
     <div className="mt-32 flex justify-center items-center">
       <span

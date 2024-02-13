@@ -13,11 +13,9 @@ export const metadata: Metadata = {
 };
 
 export default async function SettingsPage() {
-  // await new Promise((resolve) => setTimeout(resolve, 5000));
   const session = await getAuthSession();
 
   if (!session) return;
-
   const userId = session.user.id;
 
   const { user } = await getUserInfo({ userId });

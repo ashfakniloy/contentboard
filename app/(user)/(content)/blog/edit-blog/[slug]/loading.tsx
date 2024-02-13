@@ -1,5 +1,5 @@
-import { SpinnerPageLoading } from "@/components/spinner";
+import { SpinnerPage } from "@/components/spinner";
 
 export default function LoadingEditBlog() {
-  return <SpinnerPageLoading />;
+  return <SpinnerPage />;
 }

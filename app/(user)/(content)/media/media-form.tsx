@@ -1,34 +1,23 @@
+import type { Media } from "@prisma/client";
+import { FormProvider, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/spinner";
 import { InputField } from "@/components/form-fields/input-field";
 import { TextareaField } from "@/components/form-fields/textarea-field";
-import { FormProvider, useForm } from "react-hook-form";
-import { MediaProps, mediaSchema } from "@/schemas/media-schema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Media } from "@prisma/client";
 import { editMedia } from "@/db/user/mutations/edit-media";
+import { MediaProps, mediaSchema } from "@/schemas/media-schema";
 
 type MediaFormProps = {
-  // id: string;
-  // imageTitle: string;
-  // altText: string;
   selectedImage: Media;
   setImageTitleState: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export default function MediaForm({
-  // id,
-  // imageTitle,
-  // altText,
   selectedImage,
   setImageTitleState,
 }: MediaFormProps) {
-  // const initialValues = {
-  //   imageTitle: imageTitle || "",
-  //   altText: altText || "",
-  // };
-
   const defaultValues = {
     imageUrl: selectedImage.imageUrl || "",
     imageId: selectedImage.imageId || "",
@@ -43,10 +32,7 @@ export default function MediaForm({
   });
 
   const {
-    reset,
-    watch,
     formState: { isSubmitting },
-    setValue,
   } = form;
 
   const onSubmit = async (values: MediaProps) => {
@@ -55,7 +41,7 @@ export default function MediaForm({
 
     const result = await editMedia({ mediaId: selectedImage.id, values });
 
-    console.log("result", result);
+    // console.log("result", result);
 
     if (result.success) {
       toast.success(result.success);

@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 type InputFieldProps = {
   name: string;
   label?: string;
-  // className?: string;
 } & InputProps;
 
 export function InputField({ name, className, ...props }: InputFieldProps) {
@@ -47,11 +46,6 @@ export function InputFieldLong({ name, ...props }: InputFieldProps) {
 
   return (
     <div className="w-full">
-      {/* {props.label && (
-        <label htmlFor={name} className="font-medium inline-block">
-          {props.label}
-        </label>
-      )} */}
       <div className="relative">
         <Input
           id={name}
@@ -66,15 +60,6 @@ export function InputFieldLong({ name, ...props }: InputFieldProps) {
           </p>
         )}
       </div>
-
-      {/* <Field
-          id={props.name}
-          className={cn(
-            "pl-0.5 py-0 w-full outline-none text-2xl font-bold bg-transparent text-gray-600",
-            className
-          )}
-          {...props}
-        /> */}
     </div>
   );
 }

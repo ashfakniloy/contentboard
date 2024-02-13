@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { IconPlus } from "@/components/icons";
+import { DataTable } from "@/components/data-table";
 import { Button } from "@/components/ui/button";
+import { IconPlus } from "@/components/icons";
+import { blogsColumn } from "./blogs-table/blogs-column";
 import { getAuthSession } from "@/lib/next-auth";
 import { getBlogs } from "@/db/user/queries/get-blogs";
-import { DataTable } from "@/components/data-table";
-import { blogsColumn } from "@/components/data-table/columns/blogs-column";
 import { deleteBlog } from "@/db/user/mutations/delete-blog";
 
 export const metadata: Metadata = {
@@ -17,7 +17,6 @@ export default async function BlogPage({
 }: {
   searchParams: SearchParams;
 }) {
-  // await new Promise((resolve) => setTimeout(resolve, 5000));
   const session = await getAuthSession();
 
   if (!session) return;
@@ -40,7 +39,7 @@ export default async function BlogPage({
     title: search,
   });
 
-  console.log("blogsCount", blogsCount);
+  // console.log("blogsCount", blogsCount);
 
   // if (!blogs.length) {
   //   return (
