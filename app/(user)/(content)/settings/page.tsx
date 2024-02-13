@@ -1,21 +1,46 @@
 import type { Metadata } from "next";
-import UserHeader from "../_layout/header";
-import { Suspense } from "react";
-import { SpinnerSuspense } from "@/components/spinner";
-import Settings from "./settings";
+import { getAuthSession } from "@/lib/next-auth";
+import { getUserInfo } from "@/db/user/queries/get-user-info";
+import { notFound } from "next/navigation";
+import LogoChange from "./logo-change";
+import UsernameChange from "./username-change";
+import EmailChange from "./email-change";
+import PasswordChange from "./password-change";
+import AccountDelete from "./account-delete";
 
 export const metadata: Metadata = {
   title: "Settings",
 };
 
-export default function SettingsPage() {
-  return (
-    <>
-      <UserHeader heading="Settings" />
+export default async function SettingsPage() {
+  // await new Promise((resolve) => setTimeout(resolve, 5000));
+  const session = await getAuthSession();
 
-      <Suspense fallback={<SpinnerSuspense />}>
-        <Settings />
-      </Suspense>
-    </>
+  if (!session) return;
+
+  const userId = session.user.id;
+
+  const { user } = await getUserInfo({ userId });
+
+  if (!user) {
+    notFound();
+  }
+
+  return (
+    <div className="space-y-7 min-h-[81.1vh]">
+      <div className="p-7 space-y-4 rounded-lg bg-custom-gray5 dark:bg-custom-gray6">
+        <LogoChange logoUrl={user.logoUrl} />
+        <div className="w-full border border-border" />
+        <UsernameChange username={user.username} />
+      </div>
+
+      <div className="p-7 space-y-4 rounded-lg bg-custom-gray5 dark:bg-custom-gray6">
+        <EmailChange email={user.email} />
+        <div className="w-full border border-border" />
+        <PasswordChange />
+        <div className="w-full border border-border" />
+        <AccountDelete />
+      </div>
+    </div>
   );
 }

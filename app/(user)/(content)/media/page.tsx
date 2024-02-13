@@ -1,21 +1,25 @@
 import type { Metadata } from "next";
-import UserHeader from "../_layout/header";
-import { Suspense } from "react";
-import Medias from "./medias";
-import { SpinnerSuspense } from "@/components/spinner";
+import { getAuthSession } from "@/lib/next-auth";
+import { getMedias } from "@/db/user/queries/get-medias";
+import MediaGallery from "./media-gallery";
 
 export const metadata: Metadata = {
   title: "Media",
 };
 
-export default function MediaPage() {
+export default async function MediaPage() {
+  // await new Promise((resolve) => setTimeout(resolve, 5000));
+
+  const session = await getAuthSession();
+
+  if (!session) return;
+
+  const userId = session?.user.id;
+  const { medias, mediasCount } = await getMedias({ userId: userId });
+
   return (
     <>
-      <UserHeader heading="All Media" />
-
-      <Suspense fallback={<SpinnerSuspense />}>
-        <Medias />
-      </Suspense>
+      <MediaGallery medias={medias} />
     </>
   );
 }

@@ -5,14 +5,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SigninProps, signinSchema } from "@/schemas/signin-schema";
 import { EmailField } from "@/components/form-fields/email-field";
 import { PasswordField } from "@/components/form-fields/password-field";
-// import {
-//   CheckboxField,
-//   CheckboxFieldBoolean,
-// } from "@/components/form-fields/checkbox-field";
 import { Button } from "@/components/ui/button";
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { Spinner } from "@/components/spinner";
 import Link from "next/link";

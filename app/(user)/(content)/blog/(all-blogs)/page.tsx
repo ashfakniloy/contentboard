@@ -1,11 +1,18 @@
-import { DataTable } from "@/components/data-table";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { IconPlus } from "@/components/icons";
+import { Button } from "@/components/ui/button";
 import { getAuthSession } from "@/lib/next-auth";
-// import { deleteCategory } from "@/db/user/mutations/delete-category";
-import { blogsColumn } from "@/components/data-table/columns/blogs-column";
 import { getBlogs } from "@/db/user/queries/get-blogs";
+import { DataTable } from "@/components/data-table";
+import { blogsColumn } from "@/components/data-table/columns/blogs-column";
 import { deleteBlog } from "@/db/user/mutations/delete-blog";
 
-export default async function BlogsTable({
+export const metadata: Metadata = {
+  title: "All blogs",
+};
+
+export default async function BlogPage({
   searchParams: { limit, page, search, sort },
 }: {
   searchParams: SearchParams;
@@ -44,17 +51,28 @@ export default async function BlogsTable({
   // }
 
   return (
-    <div>
-      {blogs && (
-        <DataTable
-          columns={blogsColumn}
-          data={blogs}
-          searchBy="blog"
-          count={blogsCount}
-          deleteAction={deleteBlog}
-          manualControl
-        />
-      )}
-    </div>
+    <>
+      <div className="mt-10 flex justify-end">
+        <Link href="/blog/add-blog">
+          <Button type="button" className="w-[176px] rounded-full space-x-4">
+            <IconPlus />
+            <span>New Post</span>
+          </Button>
+        </Link>
+      </div>
+
+      <div className="my-10">
+        {blogs && (
+          <DataTable
+            columns={blogsColumn}
+            data={blogs}
+            searchBy="blog"
+            count={blogsCount}
+            deleteAction={deleteBlog}
+            manualControl
+          />
+        )}
+      </div>
+    </>
   );
 }

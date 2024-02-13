@@ -1,26 +1,23 @@
 import type { Metadata } from "next";
-import UserHeader from "../../_layout/header";
-// import { getCategories } from "@/db/user/queries/get-categories";
-// import { getAuthSession } from "@/lib/next-auth";
-// import BlogForm from "./blog-form";
-import AddBlog from "./add-blog";
-import { Suspense } from "react";
-import { SpinnerSuspense } from "@/components/spinner";
+import { getCategories } from "@/db/user/queries/get-categories";
+import { getAuthSession } from "@/lib/next-auth";
+import AddBlogForm from "./add-blog-form";
 
 export const metadata: Metadata = {
   title: "Add new blog",
 };
 
-export default function AddBlogPage() {
+export default async function AddBlogPage() {
+  const session = await getAuthSession();
+
+  if (!session) return;
+  const userId = session.user.id;
+
+  const { categories } = await getCategories({ userId });
+
   return (
     <>
-      <UserHeader heading="Add New Blog" />
-
-      <Suspense fallback={<SpinnerSuspense />}>
-        <div className="-mt-2 lg:-mt-7">
-          <AddBlog />
-        </div>
-      </Suspense>
+      <AddBlogForm categories={categories} />
     </>
   );
 }
