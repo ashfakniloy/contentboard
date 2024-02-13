@@ -34,7 +34,7 @@ export default function ImageUploadModal({
         {children}
       </AlertDialogTrigger>
 
-      <AlertDialogContent className="min-w-[765px] 2xl:min-w-[950px] rounded-xl bg-white">
+      <AlertDialogContent className="min-w-[765px] 2xl:min-w-[950px] rounded-xl bg-card">
         <ImageUploadContent
           // medias={medias}
           setShowImageModal={setShowImageModal}

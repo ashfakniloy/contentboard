@@ -6,6 +6,7 @@ export const IconEye = () => {
       height="16"
       fill="none"
       viewBox="0 0 22 16"
+      className="dark:text-gray-200"
     >
       <path
         fill="currentColor"

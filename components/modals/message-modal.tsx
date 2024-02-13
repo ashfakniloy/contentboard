@@ -53,7 +53,7 @@ export function MessageModal({
 
   return (
     <AlertDialog open={showMessageModal} onOpenChange={setShowMessageModal}>
-      <AlertDialogContent className="bg-white min-w-[700px] p-10">
+      <AlertDialogContent className="bg-card min-w-[700px] p-10">
         <AlertDialogCancel className="absolute top-2 right-2">
           <X size={25} />
         </AlertDialogCancel>

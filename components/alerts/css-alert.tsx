@@ -154,7 +154,7 @@ export default function CssAlert({
       <AlertTitle className="">{title}</AlertTitle>
       <AlertDescription className="">
         <div className="flex items-center justify-between">
-          <code className="rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+          <code className="rounded bg-muted dark:bg-[#18181B] px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
             {path}
           </code>
 
@@ -213,7 +213,7 @@ export default function CssAlert({
           <Info size={16} className="text-gray-500" />
           <p className="text-sm font-semibold">
             {`Blog's body root className: `}
-            <code className="rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+            <code className="rounded bg-muted dark:bg-[#18181B] px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
               ContentBoard
             </code>
           </p>

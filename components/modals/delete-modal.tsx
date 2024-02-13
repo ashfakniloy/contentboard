@@ -31,7 +31,7 @@ export function DeleteModal({
     >
       {/* <AlertDialogTrigger asChild>{children}</AlertDialogTrigger> */}
 
-      <AlertDialogContent className="bg-white w-[626px] p-9 flex flex-col items-center">
+      <AlertDialogContent className="w-[626px] p-9 flex flex-col items-center bg-card">
         <div className=" flex flex-col items-center">
           <p className="text-lg font-medium">{title}</p>
 
@@ -43,7 +43,7 @@ export function DeleteModal({
             <Button
               type="button"
               variant="outline"
-              className="w-[124px]"
+              className="w-[124px] dark:bg-transparent"
               onClick={() => setShowDeleteModal(false)}
               disabled={isPending}
             >

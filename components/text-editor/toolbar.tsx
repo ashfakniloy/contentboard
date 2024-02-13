@@ -22,8 +22,8 @@ export default function Toolbar({ editor }: { editor: Editor | null }) {
 
   return (
     <div
-      className={`tiptap-toolbar border text-gray-700 ${
-        editor.isFocused ? "border-primary" : " border-gray-300"
+      className={`tiptap-toolbar border  ${
+        editor.isFocused ? "border-primary" : " border-border"
       }`}
     >
       <TextSelect editor={editor} />
@@ -35,7 +35,7 @@ export default function Toolbar({ editor }: { editor: Editor | null }) {
         className={editor.isActive("bold") ? "is-active" : ""}
         title="Bold"
       >
-        <b>B</b>
+        <b className="dark:text-gray-200">B</b>
       </button>
 
       <button
@@ -45,7 +45,7 @@ export default function Toolbar({ editor }: { editor: Editor | null }) {
         className={editor.isActive("italic") ? "is-active" : ""}
         title="Italic"
       >
-        <i className="font-serif">I</i>
+        <i className="font-serif dark:text-gray-200">I</i>
       </button>
 
       <button
@@ -54,7 +54,9 @@ export default function Toolbar({ editor }: { editor: Editor | null }) {
         className={editor.isActive("underline") ? "is-active" : ""}
         title="Underline"
       >
-        <span className="underline underline-offset-2">U</span>
+        <span className="underline underline-offset-2 dark:text-gray-200">
+          U
+        </span>
       </button>
 
       <button

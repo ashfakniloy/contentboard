@@ -46,12 +46,12 @@ export default function ApiAlert({
       <AlertDescription className="">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <code className="rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+            <code className="rounded bg-muted dark:bg-[#18181B] px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
               {path}
             </code>
             {!isUser && (
-              <span className="flex items-center gap-0.5 text-sm font-medium">
-                <Info size={14} className="text-gray-500" />{" "}
+              <span className="flex items-center gap-1.5 text-sm font-medium">
+                <Info size={14} className="text-gray-500" />
                 {`Create an account to get API`}
               </span>
             )}
@@ -82,7 +82,7 @@ export default function ApiAlert({
 
         {values && (
           <div className="mt-2">
-            <code className="rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+            <code className="rounded bg-muted dark:bg-[#18181B] px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
               values ={` { `}
               <span className="space-x-2">
                 {values.map((value, i) => (

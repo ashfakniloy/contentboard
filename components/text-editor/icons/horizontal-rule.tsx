@@ -5,6 +5,7 @@ export const HorizontalRule = () => {
       height="20"
       viewBox="0 96 960 960"
       width="20"
+      className="dark:fill-gray-200"
     >
       <path d="M192 612v-72h576v72H192Z" />
     </svg>

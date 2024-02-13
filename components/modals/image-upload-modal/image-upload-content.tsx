@@ -43,7 +43,7 @@ function ImageUploadContent({
       <div className="text-2xl font-bold text-center">
         <div>
           {!imageUploading && !imageUploaded && (
-            <div className="flex justify-center items-center divide-x divide-gray-300">
+            <div className="flex justify-center items-center divide-x divide-gray-300 dark:divide-gray-600">
               {withLibrary ? (
                 imageOptions.map((option) => (
                   <div key={option} className="px-4">
@@ -51,8 +51,8 @@ function ImageUploadContent({
                       type="button"
                       className={`outline-none ${
                         option === selectedOption
-                          ? "text-black"
-                          : "text-gray-300"
+                          ? ""
+                          : "text-gray-300 dark:text-gray-700"
                       }`}
                       onClick={() => setSelectedOption(option)}
                     >

@@ -100,10 +100,10 @@ export default function AddBlogForm({
       <FormProvider {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex gap-5 border-b border-gray-300"
+          className="flex gap-5 border-b border-border"
           noValidate
         >
-          <div className="w-full max-w-[622px] 2xl:max-w-[1170px] min-h-[90vh] border-r border-gray-300 pr-5">
+          <div className="w-full max-w-[622px] 2xl:max-w-[1170px] min-h-[90vh] border-r border-border pr-5">
             <div className="mt-5 mb-10 space-y-9">
               <InputField
                 label="Title:"
@@ -128,7 +128,7 @@ export default function AddBlogForm({
                 <span className="size-5">
                   {isSubmitting ? (
                     published === false ? (
-                      <Spinner className="size-5 border-gray-500 border-r-gray-500/30 border-b-gray-500/30" />
+                      <Spinner className="size-5 border-gray-500 border-r-gray-500/30 border-b-gray-500/30 dark:border-gray-300 dark:border-r-gray-300/30 dark:border-b-gray-500/30" />
                     ) : (
                       <IconDraft />
                     )
@@ -192,7 +192,7 @@ export default function AddBlogForm({
 
               <div className="relative">
                 <p className="mb-2 font-medium">Featured Image:</p>
-                <div className="relative h-[160px] w-full rounded-md overflow-hidden border-gray-400 bg-gray-100 flex justify-center items-center">
+                <div className="relative h-[160px] w-full rounded-md overflow-hidden border border-gray-100 dark:border-custom-gray6 bg-gray-100 dark:bg-custom-gray6 flex justify-center items-center">
                   {!featuredImage?.imageUrl ? (
                     <ImageUploadModal
                       withLibrary
@@ -206,7 +206,7 @@ export default function AddBlogForm({
                         type="button"
                         className="w-full h-full flex justify-center items-center"
                       >
-                        <div className="flex items-center gap-1.5 text-sm text-gray-600">
+                        <div className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-300">
                           <span>
                             <IconPaperPlus />
                           </span>

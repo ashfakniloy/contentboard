@@ -66,7 +66,7 @@ export default function TextSelect({ editor }: { editor: Editor | null }) {
     <div ref={node} className="w-[130px] text-sm font-medium">
       <button
         type="button"
-        className="!pl-4 !pr-2 py-2 w-full flex !justify-between rounded-md bg-white border border-gray-300"
+        className="!pl-4 !pr-2 py-2 w-full flex !justify-between rounded-md bg-transparent border border-border"
         onClick={() => setToggle(!toggle)}
       >
         {selectedOption}
@@ -75,15 +75,15 @@ export default function TextSelect({ editor }: { editor: Editor | null }) {
 
       <div className="relative">
         {toggle && (
-          <div className="absolute w-full mt-1 space-y-0.5 p-0.5 border border-gray-300 bg-white z-30 rounded-md">
+          <div className="absolute w-full mt-1 space-y-0.5 p-0.5 border border-border bg-background z-30 rounded-md">
             {options.map((option) => (
               <button
                 key={option.name}
                 type="button"
                 className={`w-full !pl-4 flex !justify-start  ${
                   option.isActive
-                    ? "bg-gray-300 hover:!bg-gray-300"
-                    : "hover:bg-gray-100"
+                    ? "bg-gray-300 hover:!bg-gray-300 dark:bg-gray-700 hover:dark:!bg-gray-700"
+                    : "hover:bg-gray-100 dark:hover:bg-gray-800"
                 }`}
                 onClick={() => {
                   option.action();

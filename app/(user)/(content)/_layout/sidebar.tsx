@@ -8,6 +8,8 @@ import { navLinks } from "./navLinks";
 import { signOut } from "next-auth/react";
 import LogoUploadModal from "@/components/modals/logo-upload-modal";
 import ContentBoardLogo from "@/components/logo/content-board";
+import { MoonIcon } from "lucide-react";
+import DarkMode from "./dark-mode";
 
 export default function UserSidebar({
   logoUrl,
@@ -42,7 +44,7 @@ export default function UserSidebar({
   // console.log("session", session);
 
   return (
-    <div className="h-screen flex flex-col justify-between overflow-y-auto z-30 top-0 bottom-0 sticky w-[260px] scrollbar-none hover:scrollbar-thin shadow-xl scrollbar-track-gray-100 scrollbar-thumb-gray-200 bg-white">
+    <div className="h-screen flex flex-col justify-between overflow-y-auto z-30 top-0 bottom-0 sticky w-[260px] scrollbar-none hover:scrollbar-thin shadow-xl scrollbar-track-gray-100 scrollbar-thumb-gray-200 bg-white dark:bg-custom-gray6">
       <div className="">
         <div className="px-[47px] py-9">
           {/* <div className="relative w-[180px] h-[100px]"> */}
@@ -72,15 +74,15 @@ export default function UserSidebar({
             <div key={i} className="w-[160px]">
               <Link href={navLink.link} passHref>
                 <div
-                  className={`px-6 py-2 flex justify-between items-center rounded-full font-semibold transition-colors duration-200 ${
+                  className={`px-6 py-2 flex justify-between items-center rounded-full font-semibold  ${
                     isActive(navLink.link)
                       ? "bg-primary text-white"
-                      : "text-black hover:bg-gray-100"
+                      : "transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <span
-                      className={`transition-colors duration-200 ${
+                      className={` ${
                         isActive(navLink.link)
                           ? "bg-primary text-white"
                           : "text-primary"
@@ -98,7 +100,7 @@ export default function UserSidebar({
 
           <button
             type="button"
-            className={`px-6 py-2 flex justify-between items-center group font-semibold transition-colors duration-200 rounded-full w-[160px] hover:bg-gray-100`}
+            className={`px-6 py-2 flex justify-between items-center group font-semibold transition-colors duration-200 rounded-full w-[160px]   hover:bg-gray-100 dark:hover:bg-gray-700`}
             onClick={handleSignout}
           >
             <div className="flex items-center gap-3">
@@ -112,15 +114,23 @@ export default function UserSidebar({
       </div>
 
       <div className="flex flex-col items-center mb-5">
+        <div className="mx-[47px] w-[150px] flex justify-between items-center mb-12">
+          <div className="flex items-center gap-1 font-montserrat font-semibold rounded-lg">
+            <p className="text-sm">Dark Theme</p>
+          </div>
+
+          <DarkMode />
+        </div>
+
         <ContentBoardLogo />
-        <div className="mt-3 text-xs text-center font-medium text-gray-600">
+        <div className="mt-3 text-xs text-center font-medium text-gray-600 dark:text-gray-400">
           <p className="">{`© 2024, Contentboard`}</p>
           <p>
             Developed by:{" "}
             <Link
               href="https://niloy.vercel.app"
               target="_blank"
-              className="underline text-blue-600"
+              className="underline text-blue-500 hover:text-blue-900 dark:hover:text-blue-300 transition-colors duration-200"
             >
               Niloy
             </Link>

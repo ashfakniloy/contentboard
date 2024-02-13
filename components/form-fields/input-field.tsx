@@ -57,7 +57,7 @@ export function InputFieldLong({ name, ...props }: InputFieldProps) {
           id={name}
           {...props}
           {...register(name)}
-          className="pl-0.5 w-full border-0 text-2xl font-bold bg-transparent text-gray-600"
+          className="pl-0.5 w-full border-0 text-2xl font-bold bg-transparent text-gray-600 dark:text-gray-200"
         />
 
         {errors[name] && (

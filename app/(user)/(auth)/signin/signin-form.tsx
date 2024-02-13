@@ -105,10 +105,10 @@ export default function UserSigninForm() {
   };
 
   return (
-    <div className="w-full lg:w-[400px] py-14 lg:py-[68px] 2xl:w-[473px] px-5 lg:px-10 bg-white rounded-2xl shadow-lg">
+    <div className="w-full lg:w-[400px] py-14 lg:py-[68px] 2xl:w-[473px] px-5 lg:px-10 rounded-2xl shadow-lg bg-white dark:bg-custom-gray6">
       <div className="flex flex-col items-center font-manrope">
         <h1 className="text-2xl font-bold">Welcome !</h1>
-        <p className="text-custom-red">Sign in to continue</p>
+        <p className="">Sign in to continue</p>
       </div>
 
       <FormProvider {...form}>
@@ -138,22 +138,22 @@ export default function UserSigninForm() {
               Sign in
             </Button>
 
-            <div className="border-b border-gray-200 my-6"></div>
+            <div className="border-b border-border my-6"></div>
 
             <Button
               type="button"
               variant="outline"
               size="lg"
-              className="relative w-full"
+              className="relative w-full bg-transparent"
               onClick={handleGuestSignin}
               disabled={isSubmitting || guestIsSubmitting}
             >
               {guestIsSubmitting && (
-                <span className="absolute flex items-center left-24 2xl:left-32">
-                  <Spinner />
+                <span className="absolute flex items-center left-24 2xl:left-12">
+                  <Spinner className="border-gray-600 border-r-gray-600/30 border-b-gray-600/30" />
                 </span>
               )}
-              Sign in as guest (igniteweb)
+              Sign in as guest (Igniteweb)
             </Button>
 
             <div className="mt-6">
@@ -161,7 +161,7 @@ export default function UserSigninForm() {
                 {`Don't have an account? `}
                 <Link
                   href="/signup"
-                  className="text-blue-500 hover:text-blue-900 transition-colors duration-200"
+                  className="text-blue-500 hover:text-blue-900 dark:hover:text-blue-300 transition-colors duration-200"
                 >
                   Sign Up
                 </Link>

@@ -74,7 +74,7 @@ export default function LinkButton({ editor }: { editor: Editor | null }) {
             id="url"
             type="url"
             placeholder="Enter URL"
-            className="mt-2 p-3 w-full outline-none bg-white rounded-md border border-custom-gray2 focus:border-gray-700"
+            className="mt-2 p-3 w-full outline-none bg-white dark:bg-card rounded-md border border-border focus:border-primary"
             name="url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}

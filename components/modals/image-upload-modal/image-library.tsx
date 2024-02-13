@@ -88,7 +88,7 @@ export default function ImageLibrary({
                         alt={media.altText}
                         fill
                         // sizes="150px"
-                        className="object-cover border border-gray-200 rounded-md"
+                        className="object-cover border border-gray-200 dark:border-gray-800 rounded-md"
                       />
 
                       {selectedImage?.id === media.id && (

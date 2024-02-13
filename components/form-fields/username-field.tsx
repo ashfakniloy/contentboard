@@ -25,7 +25,7 @@ export function UsernameField({ name, ...props }: UsernameFIeldProps) {
         <Input
           id={name}
           type="text"
-          className="pl-9 bg-custom-gray"
+          className="pl-9 bg-custom-gray dark:bg-card"
           {...props}
           {...register(name)}
         />

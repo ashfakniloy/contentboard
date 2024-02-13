@@ -115,7 +115,7 @@ export function DataTableToolbar<TData>({
             placeholder={`Search ${searchBy}`}
             value={searchTitle || ""}
             onChange={(e) => setSearchTitle(e.target.value)}
-            className="h-8 w-full lg:w-[250px] outline-none border-gray-300"
+            className="h-8 w-full lg:w-[250px] outline-none border-border"
           />
         </div>
 

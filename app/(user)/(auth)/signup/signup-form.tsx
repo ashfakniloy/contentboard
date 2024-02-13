@@ -56,10 +56,10 @@ export default function UserSignupForm() {
   };
 
   return (
-    <div className="w-[400px] 2xl:w-[473px] px-10 py-[68px] bg-white rounded-2xl shadow-lg">
+    <div className="w-[400px] 2xl:w-[473px] px-10 py-[68px] rounded-2xl shadow-lg bg-white dark:bg-custom-gray6">
       <div className=" flex flex-col items-center font-manrope">
         <h1 className="text-2xl font-bold">Create New Account</h1>
-        <p className="text-custom-red">Sign up to continue</p>
+        <p className="">Sign up to continue</p>
       </div>
 
       <FormProvider {...form}>
@@ -95,7 +95,7 @@ export default function UserSignupForm() {
                 Already have have an account?{" "}
                 <Link
                   href="/signin"
-                  className="text-blue-500 hover:text-blue-900 transition-colors duration-200"
+                  className="text-blue-500 hover:text-blue-900 dark:hover:text-blue-300 transition-colors duration-200"
                 >
                   Sign In
                 </Link>

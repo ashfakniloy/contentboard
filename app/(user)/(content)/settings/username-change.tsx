@@ -109,7 +109,7 @@ export default function UsernameChange({ username }: { username: string }) {
             <div className="flex items-center gap-5">
               <Button
                 type="button"
-                className="w-[140px] rounded-full"
+                className="w-[140px] rounded-full bg-transparent"
                 variant="outline"
                 onClick={() => {
                   setIsSelected(false);

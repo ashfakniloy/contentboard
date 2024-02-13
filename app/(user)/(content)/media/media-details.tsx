@@ -46,9 +46,11 @@ export default function MediaDetails({
   return (
     // <ScrollArea className="h-screen w-[400px] 2xl:w-[625px]">
     <div className="w-[400px] 2xl:w-[625px]">
-      <div className="pt-4 p-5 2xl:p-7 border-b border-gray-300">
+      <div className="pt-4 p-5 2xl:p-7 border-b border-border">
         <div className="flex justify-between items-center">
-          <p className="text-[20px] font-medium text-gray-600">Image Details</p>
+          <p className="text-[20px] font-medium text-gray-600 dark:text-gray-300">
+            Image Details
+          </p>
           <MediaDelete
             selectedImage={selectedImage}
             setSelectedImage={setSelectedImage}
@@ -66,7 +68,7 @@ export default function MediaDetails({
             />
           </div>
 
-          <div className="text-sm text-gray-500 leading-6">
+          <div className="text-sm text-gray-500 dark:text-gray-300 leading-6">
             <p className="font-semibold">{imageTitleState}</p>
             <p>{getFormattedDate(selectedImage.createdAt)}</p>
             <p>

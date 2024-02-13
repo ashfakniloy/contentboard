@@ -30,14 +30,14 @@ export function PasswordField({ name, ...props }: PasswordFieldProps) {
           id={name}
           type={showPassword ? "text" : "password"}
           autoComplete="on"
-          className="pl-9 pr-3 py-3 bg-custom-gray"
+          className="pl-9 pr-3 py-3 bg-custom-gray dark:bg-card"
           {...props}
           {...register(name)}
         />
 
-        <div className="absolute inset-y-[1px] px-1 flex items-center right-[1px] bg-custom-gray rounded-md">
+        <div className="absolute inset-y-[1px] px-1 flex items-center right-[1px] rounded-md bg-custom-gray dark:bg-card">
           <span
-            className="p-[6px] text-lg cursor-pointer hover:bg-gray-200 active:bg-gray-300 rounded-full text-black/60"
+            className="p-[6px] text-lg cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 rounded-full text-black/60"
             onClick={() => setShowPassword(!showPassword)}
           >
             <span>{showPassword ? <IconEyeSlash /> : <IconEye />}</span>

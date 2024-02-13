@@ -27,6 +27,7 @@ const config = {
         "custom-gray3": "#ECECEC",
         "custom-gray4": "#8B8B8B",
         "custom-gray5": "#F1F1F1",
+        "custom-gray6": "#171717",
         "custom-orange": "#FE6D3B",
         "custom-red": "#431E1E",
         "custom-red2": "#E31414",

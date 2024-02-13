@@ -18,6 +18,7 @@ export const Heading1 = () => {
       height="25"
       viewBox="0 96 960 960"
       width="25"
+      className="dark:fill-gray-200"
     >
       <path d="M220.001 765.999V386.001H280v160h180.001v-160H520v379.998h-59.999v-160H280v160h-59.999Zm459.999 0v-320h-80v-59.998h139.999v379.998H680Z" />
     </svg>

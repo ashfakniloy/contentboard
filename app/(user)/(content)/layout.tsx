@@ -28,7 +28,7 @@ export default async function UserLayout({
               <Link
                 href="https://igniteweb.vercel.app"
                 target="_blank"
-                className="text-sm text-blue-500"
+                className="text-sm text-blue-500 hover:text-blue-900 dark:hover:text-blue-300 transition-colors duration-200"
               >
                 Visit website
               </Link>

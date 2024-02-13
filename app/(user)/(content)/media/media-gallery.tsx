@@ -1,130 +1,3 @@
-// "use client";
-
-// import { useState } from "react";
-// import { IconPaperPlus, IconTick } from "@/components/icons";
-// import ImageUploadModal from "@/components/modals/image-upload-modal";
-// import { Media } from "@prisma/client";
-// import { MediaProps } from "@/schemas/media-schema";
-// import Image from "next/image";
-// import { toast } from "sonner";
-// import MediaDetails from "./media-details";
-// import { addMedia } from "@/db/user/mutations/add-media";
-// import { ScrollArea } from "@/components/ui/scroll-area";
-// import { Button } from "@/components/ui/button";
-
-// export default function MediaGallery({ medias }: { medias: Media[] }) {
-//   const [selectedImage, setSelectedImage] = useState<Media | null>(null);
-//   const [selectedMultipleImages, setSelectedMultipleImages] = useState<Media[]>(
-//     []
-//   );
-
-//   const [showImageModal, setShowImageModal] = useState(false);
-//   const [isMultipleSelect, setIsMultipleSelect] = useState(false);
-
-//   const [imageSubmitting, setImageSubmitting] = useState(false); // will change
-
-//   const handleImageClick = (media: Media) => {
-//     if (selectedImage?.id === media.id) {
-//       setSelectedImage(null);
-//     } else {
-//       setSelectedImage(media);
-//     }
-//   };
-
-//   const handleImageSubmit = async (imageValues: MediaProps) => {
-//     // console.log("imageValues", imageValues);
-//     setImageSubmitting(true);
-
-//     const result = await addMedia({ values: imageValues });
-
-//     console.log("result", result);
-
-//     if (result.success) {
-//       toast.success(result.success);
-//       setShowImageModal(false);
-//     } else if (result.error) {
-//       toast.error(result.error);
-//     } else {
-//       toast.error("Error");
-//     }
-
-//     setImageSubmitting(false);
-//   };
-
-//   return (
-//     <div className="">
-//       <div className="flex justify-end">
-//         <Button
-//           variant="outline"
-//           onClick={() => setIsMultipleSelect(!isMultipleSelect)}
-//           className="h-8 px-3 text-xs lg:text-sm font-normal"
-//         >
-//           {!isMultipleSelect ? "Select medias" : "Cancel media selection"}
-//         </Button>
-//       </div>
-//       <div className="mt-5 flex justify-between rounded-xl border border-gray-300">
-//         <ScrollArea className="h-[81vh]">
-//           <div className="flex flex-wrap gap-5 2xl:gap-7 p-5 2xl:p-7">
-//             <ImageUploadModal
-//               // medias={medias}
-//               handleImageSubmit={handleImageSubmit}
-//               showImageModal={showImageModal}
-//               setShowImageModal={setShowImageModal}
-//               imageSubmitting={imageSubmitting}
-//             >
-//               <button
-//                 type="button"
-//                 className="size-[180px] 2xl:size-[280px] rounded-md border-gray-400 bg-gray-100 flex justify-center items-center"
-//               >
-//                 <div className="flex items-center gap-1.5 text-sm text-gray-600">
-//                   <span>
-//                     <IconPaperPlus />
-//                   </span>
-//                   <p>Upload Image</p>
-//                 </div>
-//               </button>
-//             </ImageUploadModal>
-
-//             {medias.map((media) => (
-//               <div
-//                 key={media.id}
-//                 className={`relative size-[180px] 2xl:size-[282px] rounded-md overflow-hidden cursor-pointer`}
-//                 onClick={() => handleImageClick(media)}
-//               >
-//                 <Image
-//                   src={media.imageUrl}
-//                   alt={media.altText}
-//                   sizes="282px"
-//                   fill
-//                   className="object-cover rounded-md border border-gray-200"
-//                 />
-
-//                 {selectedImage?.id === media.id && (
-//                   <div className="absolute inset-0 border-[6px] border-cyan-400 rounded-md">
-//                     <div className="absolute top-0 right-0 size-6 flex justify-center items-center bg-cyan-400 border border-white text-white">
-//                       <IconTick />
-//                     </div>
-//                   </div>
-//                 )}
-//               </div>
-//             ))}
-//           </div>
-//         </ScrollArea>
-
-//         {!isMultipleSelect && selectedImage && (
-//           <div className="border-l border-gray-300">
-//             <MediaDetails
-//               key={selectedImage.id}
-//               selectedImage={selectedImage}
-//               setSelectedImage={setSelectedImage}
-//             />
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
-
 "use client";
 
 import { useState } from "react";
@@ -265,7 +138,7 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
           </Button>
         )}
       </div>
-      <div className="mt-5 flex justify-between rounded-xl border border-gray-300">
+      <div className="mt-5 flex justify-between rounded-xl border border-border">
         <ScrollArea className="h-[81vh]">
           <div className="flex flex-wrap gap-5 2xl:gap-7 p-5 2xl:p-7">
             {!isMultipleSelect ? (
@@ -277,9 +150,9 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
               >
                 <button
                   type="button"
-                  className="size-[180px] 2xl:size-[280px] rounded-md border-gray-400 bg-gray-100 flex justify-center items-center"
+                  className="size-[180px] 2xl:size-[280px] rounded-md bg-gray-100 dark:bg-custom-gray6 flex justify-center items-center"
                 >
-                  <div className="flex items-center gap-1.5 text-sm text-gray-600">
+                  <div className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-300">
                     <span>
                       <IconPaperPlus />
                     </span>
@@ -291,9 +164,9 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
               <button
                 type="button"
                 disabled
-                className="size-[180px] 2xl:size-[280px] rounded-md border-gray-400 bg-gray-100  flex justify-center items-center disabled:opacity-30 disabled:cursor-not-allowed"
+                className="size-[180px] 2xl:size-[280px] rounded-md bg-gray-100 dark:bg-custom-gray6 flex justify-center items-center disabled:opacity-30 disabled:cursor-not-allowed"
               >
-                <div className="flex items-center gap-1.5 text-sm text-gray-600">
+                <div className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-300">
                   <span>
                     <IconPaperPlus />
                   </span>
@@ -313,7 +186,7 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
                   alt={media.altText}
                   sizes="282px"
                   fill
-                  className="object-cover rounded-md border border-gray-200"
+                  className="object-cover rounded-md border border-border"
                 />
 
                 {isMultipleSelect && (
@@ -353,7 +226,7 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
         </ScrollArea>
 
         {!isMultipleSelect && selectedImage && (
-          <div className="border-l border-gray-300">
+          <div className="border-l border-border">
             <MediaDetails
               key={selectedImage.id}
               selectedImage={selectedImage}

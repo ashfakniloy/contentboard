@@ -193,8 +193,8 @@ export default function LogoUploadModal({
       )}
 
       {showResizeModal && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex justify-center items-center">
-          <div className="bg-white w-[550px] p-10 rounded-lg">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex justify-center items-center">
+          <div className="bg-card border w-[550px] p-10 rounded-lg text-foreground">
             <p className="text-center text-3xl font-bold">Add Logo</p>
             <div className="mt-5 relative w-full h-[300px]">
               {imageSrc && (
@@ -230,7 +230,7 @@ export default function LogoUploadModal({
                 type="button"
                 variant="outline"
                 onClick={closeModal}
-                className="w-full"
+                className="w-full bg-transparent"
                 disabled={imageUploading}
               >
                 Cancel

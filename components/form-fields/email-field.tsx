@@ -26,7 +26,7 @@ export function EmailField({ name, ...props }: EmailFieldProps) {
         <Input
           id={name}
           type="email"
-          className="pl-9 bg-custom-gray"
+          className="pl-9 bg-custom-gray dark:bg-card"
           {...props}
           {...register(name)}
         />

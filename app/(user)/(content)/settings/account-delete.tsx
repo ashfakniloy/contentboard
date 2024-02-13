@@ -13,7 +13,6 @@ import {
 } from "@/schemas/settings-schema";
 import { AlertDialog, AlertDialogContent } from "@/components/ui/alert-dialog";
 import { PasswordField } from "@/components/form-fields/password-field";
-import { changePassword } from "@/db/user/mutations/change-password";
 import { InputField } from "@/components/form-fields/input-field";
 import { deleteAccount } from "@/db/user/mutations/delete-account";
 
@@ -79,7 +78,7 @@ export default function AccountDelete() {
       </div>
 
       <AlertDialog open={showModal} onOpenChange={setShowModal}>
-        <AlertDialogContent className="bg-white w-[450px] p-9 flex flex-col items-center">
+        <AlertDialogContent className="bg-card w-[450px] p-9 flex flex-col items-center">
           <p className="text-xl font-semibold text-center">
             Do you want to delete your account?
           </p>
@@ -100,7 +99,7 @@ export default function AccountDelete() {
               <InputField
                 name="confirmText"
                 label="To verify, type delete my account below"
-                className="bg-custom-gray"
+                className="bg-custom-gray dark:bg-card"
               />
               <div className="">
                 <div className="mt-8 flex justify-center gap-5">

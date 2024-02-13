@@ -6,9 +6,9 @@ export default function UserAuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex bg-custom-gray3">
+    <div className="min-h-screen flex bg-custom-gray3 dark:bg-black">
       <div className="flex-1 flex relative">
-        <div className="flex items-center w-[70%] justify-center z-10 bg-white">
+        <div className="flex items-center w-[70%] justify-center z-10 bg-white dark:bg-custom-gray6">
           <div className="ml-[20%]">
             <ContentBoardLogo className="w-[400px]" />
             <p className="mt-1 mr-1 text-primary font-medium text-end text-[16px] italic">
@@ -17,7 +17,7 @@ export default function UserAuthLayout({
           </div>
         </div>
 
-        <div className="absolute inset-y-0 right-[15%] w-[30%] bg-white -skew-x-[16deg]"></div>
+        <div className="absolute inset-y-0 right-[15%] w-[30%] bg-white dark:bg-custom-gray6 -skew-x-[16deg]"></div>
       </div>
 
       <div className="flex-1 flex justify-center items-center">{children}</div>

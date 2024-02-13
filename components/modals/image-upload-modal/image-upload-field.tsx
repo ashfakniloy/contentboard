@@ -156,7 +156,11 @@ export default function ImageUploadField({
       {!imagePreview ? (
         <div
           className={`h-full flex flex-col justify-center items-center rounded-xl border-2 border-dashed
-            text-gray-300 ${dragging ? "border-blue-500" : "border-gray-300"}`}
+            text-gray-300 dark:text-gray-600 ${
+              dragging
+                ? "border-blue-500"
+                : "border-gray-300 dark:border-gray-700"
+            }`}
           onDragEnter={handleDragEnter}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
@@ -210,7 +214,7 @@ export default function ImageUploadField({
                 />
 
                 <div className="absolute inset-0 flex justify-center items-center h-full">
-                  <div className="w-[330px] px-7 py-5 rounded-lg border border-gray-200 bg-white">
+                  <div className="w-[330px] px-7 py-5 rounded-lg border border-gray-200 dark:border-gray-700 bg-card">
                     <ImageSubmitForm
                       imageId={imageId}
                       imageUrl={imageUrl}

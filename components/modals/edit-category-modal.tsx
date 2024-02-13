@@ -87,7 +87,7 @@ export function EditCategoryModal({
       onOpenChange={setShowEditModal}
       // key={categoryInfo.id}
     >
-      <AlertDialogContent className="bg-white w-[626px] py-9 px-0">
+      <AlertDialogContent className="bg-card w-[626px] py-9 px-0">
         <p className="text-center text-2xl font-bold">
           Edit {category.categoryName}
         </p>

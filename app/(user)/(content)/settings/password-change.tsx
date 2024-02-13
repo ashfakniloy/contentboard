@@ -85,7 +85,7 @@ export default function PasswordChange() {
       </div>
 
       <AlertDialog open={showPasswordModal} onOpenChange={setShowPasswordModal}>
-        <AlertDialogContent className="bg-white w-[450px] p-9 flex flex-col items-center">
+        <AlertDialogContent className="bg-card w-[450px] p-9 flex flex-col items-center">
           <p className="text-xl font-semibold text-center mb-5">
             Change password
           </p>
