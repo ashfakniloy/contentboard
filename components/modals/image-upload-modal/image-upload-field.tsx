@@ -4,7 +4,6 @@ import { toast } from "sonner";
 import { IconCloudArrow } from "@/components/icons";
 import { Spinner } from "@/components/spinner";
 import ImageSubmitForm from "./image-submit-form";
-// import LogoSubmit from "./logo-submit";
 import {
   CLOUDINARY_CLOUD_NAME,
   CLOUDINARY_FOLDER,
@@ -18,8 +17,6 @@ type ImageUploadFieldProps = {
   setImageUploading: React.Dispatch<React.SetStateAction<boolean>>;
   setImageUploaded: React.Dispatch<React.SetStateAction<boolean>>;
   setShowImageModal: React.Dispatch<React.SetStateAction<boolean>>;
-  // isLogo: boolean;
-  // handleImageSubmit: (values: { logo: string }) => Promise<void>;
   handleImageSubmit: (imageValues: MediaProps) => void;
   imageSubmitting?: boolean;
 };
@@ -29,7 +26,6 @@ export default function ImageUploadField({
   setImageUploading,
   setImageUploaded,
   setShowImageModal,
-  // isLogo,
   handleImageSubmit,
   imageSubmitting,
 }: ImageUploadFieldProps) {
@@ -223,27 +219,6 @@ export default function ImageUploadField({
                     />
                   </div>
                 </div>
-
-                {/* {!isLogo ? (
-                  <div className="absolute inset-0 flex justify-center items-center h-full">
-                    <div className=" w-[330px] px-7 py-5 bg-white rounded-lg">
-                      <ImageSubmitForm
-                        imageId={imageId}
-                        imageUrl={imageUrl}
-                        handleImageSubmit={handleImageSubmit}
-                        imageSubmitting={imageSubmitting}
-                      />
-                    </div>
-                  </div>
-                ) : (
-                  <div className="mt-8 absolute right-3 bottom-3">
-                    <LogoSubmit
-                      logo={imageUrl}
-                      handleImageSubmit={handleImageSubmit}
-                      imageSubmitting={imageSubmitting}
-                    />
-                  </div>
-                )} */}
               </>
             )
           )}

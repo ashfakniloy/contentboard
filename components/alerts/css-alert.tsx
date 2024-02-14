@@ -5,8 +5,9 @@ import { toast } from "sonner";
 import { Check, Copy, Info, Palette } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import { BASE_URL } from "@/config";
 
-const cssText = `.ContentBoard > * + * {
+const cssCode = `.ContentBoard > * + * {
   padding-top: 16px;
 }
 
@@ -110,13 +111,9 @@ const cssText = `.ContentBoard > * + * {
   border-top: 1px solid #ccc;
 }`;
 
-export default function CssAlert({
-  title,
-  path,
-}: {
-  title: string;
-  path: string;
-}) {
+const cssLink = `<link rel="stylesheet" href="${BASE_URL}/_next/static/css/f4b2ee2f39e6b871.css" />`;
+
+export default function CssAlert() {
   const [isCopied, setIsCopied] = useState(false);
   const [isCodeCopied, setIsCodeCopied] = useState(false);
 
@@ -143,7 +140,7 @@ export default function CssAlert({
   };
 
   const onCSSCopy = () => {
-    navigator.clipboard.writeText(cssText);
+    navigator.clipboard.writeText(cssCode);
     toast.success("CSS code copied to clipboard", { duration: 3000 });
     setIsCodeCopied(true);
   };
@@ -151,11 +148,11 @@ export default function CssAlert({
   return (
     <Alert>
       <Palette className="h-4 w-4" />
-      <AlertTitle className="">{title}</AlertTitle>
+      <AlertTitle className="">CSS</AlertTitle>
       <AlertDescription className="">
         <div className="flex items-center justify-between">
           <code className="rounded bg-muted dark:bg-[#18181B] px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
-            {path}
+            {cssLink}
           </code>
 
           {!isCopied ? (
@@ -164,7 +161,7 @@ export default function CssAlert({
               variant="outline"
               size="sm"
               title="Copy"
-              onClick={() => onCopy(path)}
+              onClick={() => onCopy(cssLink)}
             >
               <Copy className="h-4 w-4" />
             </Button>
@@ -209,7 +206,7 @@ export default function CssAlert({
           )}
         </div>
 
-        <div className="mt-1 flex items-center gap-1">
+        <div className="mt-1 flex items-center gap-1.5">
           <Info size={16} className="text-gray-500" />
           <p className="text-sm font-semibold">
             {`Blog's body root className: `}
@@ -219,7 +216,7 @@ export default function CssAlert({
           </p>
         </div>
 
-        <div className="mt-1 flex items-center gap-1">
+        <div className="mt-1 flex items-center gap-1.5">
           <Info size={16} className="text-gray-500" />
           <p className="text-sm font-semibold">{`For rendering blog's body, use an HTML parser`}</p>
         </div>

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import UserHeader from "./_layout/header";
 
 export default function UserMainError({
   error,
@@ -15,20 +16,22 @@ export default function UserMainError({
   }, [error]);
 
   return (
-    <div className="flex flex-col gap-3 justify-center items-center min-h-screen">
-      <h4 className="text-xl font-semibold text-red-500">
-        Something went wrong!
-      </h4>
-      <Button
-        type="button"
-        size="lg"
-        onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => reset()
-        }
-      >
-        Try again
-      </Button>
-    </div>
+    <>
+      <UserHeader heading="Error" />
+      <div className="flex flex-col gap-4 justify-center items-center min-h-[81.2vh]">
+        <h4 className="text-xl font-semibold text-red-500">
+          Something went wrong!
+        </h4>
+        <Button
+          type="button"
+          onClick={
+            // Attempt to recover by trying to re-render the segment
+            () => reset()
+          }
+        >
+          Try again
+        </Button>
+      </div>
+    </>
   );
 }

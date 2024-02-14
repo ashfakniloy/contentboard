@@ -3,6 +3,7 @@ import { getAuthSession } from "@/lib/next-auth";
 import ApiAlert from "@/components/alerts/api-alert";
 import CssAlert from "@/components/alerts/css-alert";
 import { BASE_URL } from "@/config";
+import ScriptAlert from "@/components/alerts/script-alert";
 
 export const metadata: Metadata = {
   title: "API endpoints",
@@ -16,6 +17,7 @@ export default async function ApiUrlsPage() {
   const userId = isUser ? session.user.id : "........................";
 
   const url = `${BASE_URL}/api/${userId}`;
+  const scriptUrl = `${BASE_URL}/api/${userId}/set-device-id`;
 
   const messageValues = [
     {
@@ -56,10 +58,12 @@ export default async function ApiUrlsPage() {
 
       <div className="">
         <p className="text-2xl font-bold mb-2">Blog Styling</p>
-        <CssAlert
-          title="CSS"
-          path={`${BASE_URL}/_next/static/css/f4b2ee2f39e6b871.css`}
-        />
+        <CssAlert />
+      </div>
+
+      <div className="">
+        <p className="text-2xl font-bold mb-2">Blog View Count</p>
+        <ScriptAlert isUser={isUser} scriptUrl={scriptUrl} />
       </div>
 
       <div className="">

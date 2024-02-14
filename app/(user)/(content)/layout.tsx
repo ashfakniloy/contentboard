@@ -35,7 +35,7 @@ export default async function UserLayout({
           )}
         </div>
 
-        <main>{children}</main>
+        <main className="min-h-[91.45vh]">{children}</main>
       </div>
     </div>
   );

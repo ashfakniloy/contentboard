@@ -1,5 +1,99 @@
+// import { prisma } from "@/lib/prisma";
+// import { NextRequest, NextResponse } from "next/server";
+
+// const corsHeaders = {
+//   "Access-Control-Allow-Origin": "*",
+//   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+//   "Access-Control-Allow-Headers": "Content-Type, Authorization",
+// };
+
+// export async function OPTIONS(req: NextRequest) {
+//   return NextResponse.json({}, { headers: corsHeaders });
+// }
+
+// export async function GET(
+//   request: NextRequest,
+//   { params }: { params: { userId: string; slug: string } }
+// ) {
+//   const userId = params.userId;
+//   const slug = params.slug;
+
+//   const userResponse = await prisma.user.findUnique({
+//     where: {
+//       id: userId,
+//     },
+//     select: {
+//       id: true,
+//     },
+//   });
+
+//   if (!userResponse?.id) {
+//     return NextResponse.json(
+//       { error: true, message: "User not found" },
+//       { status: 404, headers: corsHeaders }
+//     );
+//   }
+
+//   // console.log("slug", slug);
+
+//   try {
+//     const response = await prisma.blog.findFirst({
+//       where: {
+//         slug: slug,
+//         AND: {
+//           userId: userId,
+//           published: true,
+//         },
+//         // userId: userId,
+//         // slug: decodedSlug,
+//         // AND: {
+//         //   published: true,
+//         // },
+//       },
+//       select: {
+//         id: true,
+//         author: true,
+//         slug: true,
+//         categories: true,
+//         title: true,
+//         body: true,
+//         featuredImage: {
+//           select: {
+//             imageUrl: true,
+//             imageTitle: true,
+//             altText: true,
+//           },
+//         },
+//         metaDescription: true,
+//         createdAt: true,
+//         updatedAt: true,
+//       },
+//     });
+
+//     if (response?.id) {
+//       return NextResponse.json(
+//         { success: true, data: response },
+//         { status: 200, headers: corsHeaders }
+//       );
+//     } else {
+//       return NextResponse.json(
+//         { error: true, message: "Blog not found" },
+//         { status: 404, headers: corsHeaders }
+//       );
+//     }
+//   } catch (error) {
+//     return NextResponse.json(
+//       { error: true, message: "Something went wrong", data: error },
+//       { status: 500, headers: corsHeaders }
+//     );
+//   }
+// }
+
+// with visitorId based unique view add
 import { prisma } from "@/lib/prisma";
-import { NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { NextRequest, NextResponse, userAgent } from "next/server";
+import { validate as uuidValidate } from "uuid";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -18,6 +112,12 @@ export async function GET(
   const userId = params.userId;
   const slug = params.slug;
 
+  const { device } = userAgent(request);
+
+  const viewport = device.type === "mobile" ? "mobile" : "desktop";
+  const visitorId = cookies().get("visitorId")?.value;
+  const country = request.geo?.country; //will be available only in vercel
+
   const userResponse = await prisma.user.findUnique({
     where: {
       id: userId,
@@ -33,8 +133,6 @@ export async function GET(
       { status: 404, headers: corsHeaders }
     );
   }
-
-  // console.log("slug", slug);
 
   try {
     const response = await prisma.blog.findFirst({
@@ -71,10 +169,45 @@ export async function GET(
     });
 
     if (response?.id) {
-      return NextResponse.json(
+      const sentResponse = NextResponse.json(
         { success: true, data: response },
         { status: 200, headers: corsHeaders }
       );
+
+      if (sentResponse.status === 200 && visitorId) {
+        if (uuidValidate(visitorId)) {
+          const isViewed = await prisma.blogView.findUnique({
+            where: {
+              blogId_visitorId: {
+                blogId: response.id,
+                visitorId: visitorId,
+              },
+            },
+          });
+
+          if (!isViewed) {
+            await prisma.blogView.create({
+              data: {
+                blog: {
+                  connect: {
+                    id: response.id,
+                  },
+                },
+                user: {
+                  connect: {
+                    id: userResponse.id,
+                  },
+                },
+                visitorId: visitorId,
+                viewport: viewport,
+                country: country,
+              },
+            });
+          }
+        }
+      }
+
+      return sentResponse;
     } else {
       return NextResponse.json(
         { error: true, message: "Blog not found" },

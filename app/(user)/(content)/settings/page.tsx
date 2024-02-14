@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function SettingsPage() {
+  // await new Promise((resolve) => setTimeout(resolve, 5000));
   const session = await getAuthSession();
 
   if (!session) return;
@@ -25,7 +26,7 @@ export default async function SettingsPage() {
   }
 
   return (
-    <div className="space-y-7 min-h-[81.1vh]">
+    <div className="space-y-7">
       <div className="p-7 space-y-4 rounded-lg bg-custom-gray5 dark:bg-custom-gray6">
         <LogoChange logoUrl={user.logoUrl} />
         <div className="w-full border border-border" />

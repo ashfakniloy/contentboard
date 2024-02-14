@@ -2,23 +2,18 @@ import { useState } from "react";
 import ImageUploadField from "./image-upload-field";
 import { IconX } from "@/components/icons";
 import ImageLibrary from "./image-library";
-import { Media } from "@prisma/client";
 import { MediaProps } from "@/schemas/media-schema";
 
 type ImageUploadContentProps = {
-  // medias: Media[];
   setShowImageModal: React.Dispatch<React.SetStateAction<boolean>>;
   withLibrary?: boolean;
-  // isLogo: boolean;
   handleImageSubmit: (imageValues: MediaProps) => void;
   imageSubmitting?: boolean;
 };
 
 function ImageUploadContent({
-  // medias,
   setShowImageModal,
   withLibrary,
-  // isLogo,
   handleImageSubmit,
   imageSubmitting,
 }: ImageUploadContentProps) {
@@ -68,9 +63,6 @@ function ImageUploadContent({
 
           {imageUploading && <p>Uploading...</p>}
           {imageUploaded && <p>Image Uploaded</p>}
-
-          {/* {imageUploaded && !isLogo && <p>Image Uploaded</p>}
-          {isLogo && imageUploaded && <p>Submit logo</p>} */}
         </div>
       </div>
 
@@ -81,7 +73,6 @@ function ImageUploadContent({
             setImageUploading={setImageUploading}
             setImageUploaded={setImageUploaded}
             setShowImageModal={setShowImageModal}
-            // isLogo={isLogo}
             handleImageSubmit={handleImageSubmit}
             imageSubmitting={imageSubmitting}
           />
@@ -89,7 +80,6 @@ function ImageUploadContent({
 
         {selectedOption === "Choose From Library" && withLibrary && (
           <ImageLibrary
-            // medias={medias}
             setShowImageModal={setShowImageModal}
             handleImageSubmit={handleImageSubmit}
           />
