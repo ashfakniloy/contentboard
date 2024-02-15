@@ -1,11 +1,6 @@
 // import { prisma } from "@/lib/prisma";
 // import { NextRequest, NextResponse } from "next/server";
-
-// const corsHeaders = {
-//   "Access-Control-Allow-Origin": "*",
-//   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-//   "Access-Control-Allow-Headers": "Content-Type, Authorization",
-// };
+// import { corsHeaders } from "@/utils/cors-headers";
 
 // export async function OPTIONS(req: NextRequest) {
 //   return NextResponse.json({}, { headers: corsHeaders });
@@ -181,14 +176,9 @@
 // }
 
 // with ip, ua and hour based visitorId view add
-import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse, userAgent } from "next/server";
-
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization",
-};
+import { prisma } from "@/lib/prisma";
+import { corsHeaders } from "@/utils/cors-headers";
 
 export async function OPTIONS(req: NextRequest) {
   return NextResponse.json({}, { headers: corsHeaders });
@@ -333,12 +323,7 @@ export async function GET(
 // import { cookies } from "next/headers";
 // import { NextRequest, NextResponse, userAgent } from "next/server";
 // import { validate as uuidValidate } from "uuid";
-
-// const corsHeaders = {
-//   "Access-Control-Allow-Origin": "*",
-//   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-//   "Access-Control-Allow-Headers": "Content-Type, Authorization",
-// };
+// import { corsHeaders } from "@/utils/cors-headers";
 
 // export async function OPTIONS(req: NextRequest) {
 //   return NextResponse.json({}, { headers: corsHeaders });

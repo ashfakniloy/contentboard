@@ -1,7 +1,6 @@
-.ContentBoard {
-  /* max-width: 100%; */
+/* .ContentBoard {
   overflow-x: auto;
-}
+} */
 
 .ContentBoard > * + * {
   /* margin-top: 16px; */

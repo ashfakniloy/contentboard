@@ -43,7 +43,7 @@ export default function SectionChart({
     years = ["All", ...years];
   }
 
-  console.log("years", years);
+  // console.log("years", years);
 
   return (
     <div
