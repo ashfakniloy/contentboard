@@ -17,10 +17,12 @@ export default function ApiAlert({
   path,
   values,
   isUser,
+  info,
 }: {
   title: string;
   path: string;
   isUser: boolean;
+  info?: string;
   values?: Values[];
 }) {
   const [isCopied, setIsCopied] = useState(false);
@@ -79,6 +81,12 @@ export default function ApiAlert({
             </Button>
           )}
         </div>
+        {info && (
+          <div className="mt-1 flex items-center gap-1.5">
+            <Info size={16} className="text-gray-500" />
+            <p className="text-sm font-semibold">{info}</p>
+          </div>
+        )}
 
         {values && (
           <div className="mt-2">

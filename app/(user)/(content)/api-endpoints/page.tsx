@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { getAuthSession } from "@/lib/next-auth";
 import ApiAlert from "@/components/alerts/api-alert";
+import ScriptAlert from "@/components/alerts/script-alert";
 import CssAlert from "@/components/alerts/css-alert";
 import { BASE_URL } from "@/config";
-import ScriptAlert from "@/components/alerts/script-alert";
 
 export const metadata: Metadata = {
   title: "API endpoints",
@@ -17,7 +17,8 @@ export default async function ApiUrlsPage() {
   const userId = isUser ? session.user.id : "........................";
 
   const url = `${BASE_URL}/api/${userId}`;
-  const scriptUrl = `${BASE_URL}/api/${userId}/set-device-id`;
+  const cssUrl = `<link rel="stylesheet" href="${BASE_URL}/_next/static/css/f4b2ee2f39e6b871.css" />`;
+  // const scriptUrl = `${BASE_URL}/api/${userId}/set-device-id`;
 
   const messageValues = [
     {
@@ -44,6 +45,9 @@ export default async function ApiUrlsPage() {
     },
   ];
 
+  const singleBlogInfo =
+    "Make sure to pass headers in request to add unique views. Since you will be using SSR, you must manually include headers from your client-side request to the server-side GET request";
+
   return (
     <div className="space-y-10">
       <div className="">
@@ -53,18 +57,23 @@ export default async function ApiUrlsPage() {
 
       <div className="">
         <p className="text-2xl font-bold mb-2">Single Blog</p>
-        <ApiAlert title="GET" path={`${url}/blogs/{slug}`} isUser={isUser} />
+        <ApiAlert
+          title="GET"
+          path={`${url}/blogs/{slug}`}
+          isUser={isUser}
+          info={singleBlogInfo}
+        />
       </div>
 
       <div className="">
         <p className="text-2xl font-bold mb-2">Blog Styling</p>
-        <CssAlert />
+        <CssAlert cssUrl={cssUrl} />
       </div>
 
-      <div className="">
+      {/* <div className="">
         <p className="text-2xl font-bold mb-2">Blog View Count</p>
         <ScriptAlert isUser={isUser} scriptUrl={scriptUrl} />
-      </div>
+      </div> */}
 
       <div className="">
         <p className="text-2xl font-bold mb-2">All Categories</p>
