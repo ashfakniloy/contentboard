@@ -3,10 +3,10 @@ import { prisma } from "@/lib/prisma";
 import { corsHeaders } from "@/utils/cors-headers";
 import { MessageProps, messageSchema } from "@/schemas/message-schema";
 
-export async function OPTIONS(req: NextRequest) {
-  // return NextResponse.json({}, { headers: corsHeaders });
-  return NextResponse.json({});
-}
+// export async function OPTIONS(req: NextRequest) {
+//   // return NextResponse.json({}, { headers: corsHeaders });
+//   return NextResponse.json({});
+// }
 
 export async function POST(
   request: NextRequest,

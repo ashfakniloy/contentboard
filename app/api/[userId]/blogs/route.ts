@@ -2,10 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { corsHeaders } from "@/utils/cors-headers";
 
-export async function OPTIONS(req: NextRequest) {
-  // return NextResponse.json({}, { headers: corsHeaders });
-  return NextResponse.json({});
-}
+// export async function OPTIONS(req: NextRequest) {
+//   // return NextResponse.json({}, { headers: corsHeaders });
+//   return NextResponse.json({});
+// }
 
 export async function GET(
   request: NextRequest,
