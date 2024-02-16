@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getAuthSession } from "@/lib/next-auth";
 import ApiAlert from "@/components/alerts/api-alert";
-import ScriptAlert from "@/components/alerts/script-alert";
 import CssAlert from "@/components/alerts/css-alert";
 import { BASE_URL } from "@/config";
 
@@ -17,8 +16,7 @@ export default async function ApiUrlsPage() {
   const userId = isUser ? session.user.id : "........................";
 
   const url = `${BASE_URL}/api/${userId}`;
-  const cssUrl = `<link rel="stylesheet" href="${BASE_URL}/_next/static/css/f4b2ee2f39e6b871.css" />`;
-  // const scriptUrl = `${BASE_URL}/api/${userId}/set-device-id`;
+  const cssUrl = `<link rel="stylesheet" href="${BASE_URL}/_next/static/css/488ef1a06c0ef557.css" />`;
 
   const messageValues = [
     {
@@ -69,11 +67,6 @@ export default async function ApiUrlsPage() {
         <p className="text-2xl font-bold mb-2">Blog Styling</p>
         <CssAlert cssUrl={cssUrl} />
       </div>
-
-      {/* <div className="">
-        <p className="text-2xl font-bold mb-2">Blog View Count</p>
-        <ScriptAlert isUser={isUser} scriptUrl={scriptUrl} />
-      </div> */}
 
       <div className="">
         <p className="text-2xl font-bold mb-2">All Categories</p>

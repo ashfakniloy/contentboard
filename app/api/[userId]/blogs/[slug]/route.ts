@@ -1,12 +1,6 @@
 // with ip, ua and hour based visitorId view add, new version
 import { NextRequest, NextResponse, userAgent } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { corsHeaders } from "@/utils/cors-headers";
-
-// export async function OPTIONS(request: NextRequest) {
-//   // return NextResponse.json({}, { headers: corsHeaders });
-//   return NextResponse.json({});
-// }
 
 export async function GET(
   request: NextRequest,
@@ -44,7 +38,6 @@ export async function GET(
   if (!userResponse?.id) {
     return NextResponse.json(
       { error: true, message: "User not found" },
-      // { status: 404, headers: corsHeaders }
       { status: 404 }
     );
   }
@@ -81,7 +74,6 @@ export async function GET(
     if (response?.id) {
       const sentResponse = NextResponse.json(
         { success: true, data: response },
-        // { status: 200, headers: corsHeaders }
         { status: 200 }
       );
 
@@ -124,14 +116,12 @@ export async function GET(
     } else {
       return NextResponse.json(
         { error: true, message: "Blog not found" },
-        // { status: 404, headers: corsHeaders }
         { status: 404 }
       );
     }
   } catch (error) {
     return NextResponse.json(
       { error: true, message: "Something went wrong", data: error },
-      // { status: 500, headers: corsHeaders }
       { status: 500 }
     );
   }

@@ -1,28 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { corsHeaders } from "@/utils/cors-headers";
-import { MessageProps, messageSchema } from "@/schemas/message-schema";
+import { messageSchema } from "@/schemas/message-schema";
 
-// export async function OPTIONS(req: NextRequest) {
-//   // return NextResponse.json({}, { headers: corsHeaders });
-//   return NextResponse.json({});
-// }
+export async function OPTIONS(req: NextRequest) {
+  return NextResponse.json({});
+} // only needed in post request api
 
 export async function POST(
   request: NextRequest,
   { params }: { params: { userId: string } }
 ) {
   const userId = params.userId;
-
-  // if (!userId) {
-  //   return NextResponse.json(
-  //     { error: true, message: "User ID not found" },
-  //     {
-  //       status: 400,
-  //       headers: corsHeaders,
-  //     }
-  //   );
-  // }
 
   const body = await request.json();
 
@@ -33,7 +21,6 @@ export async function POST(
 
     return NextResponse.json(
       { error: true, message: "Invalid request", data: errors },
-      // { status: 400, headers: corsHeaders }
       { status: 400 }
     );
   }
@@ -54,7 +41,6 @@ export async function POST(
   if (!userResponse) {
     return NextResponse.json(
       { error: true, message: "User not found" },
-      // { status: 404, headers: corsHeaders }
       { status: 404 }
     );
   }
@@ -76,13 +62,11 @@ export async function POST(
         success: true,
         message: "Message submitted successfully",
       },
-      // { status: 200, headers: corsHeaders }
       { status: 200 }
     );
   } catch (error) {
     return NextResponse.json(
       { error: true, message: "Something went wrong", data: error },
-      // { status: 400, headers: corsHeaders }
       { status: 400 }
     );
   }
