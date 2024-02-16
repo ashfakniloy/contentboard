@@ -3,7 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { corsHeaders } from "@/utils/cors-headers";
 
 export async function OPTIONS(req: NextRequest) {
-  return NextResponse.json({}, { headers: corsHeaders });
+  // return NextResponse.json({}, { headers: corsHeaders });
+  return NextResponse.json({});
 }
 
 export async function GET(
@@ -24,7 +25,8 @@ export async function GET(
   if (!userResponse) {
     return NextResponse.json(
       { error: true, message: "User not found" },
-      { status: 404, headers: corsHeaders }
+      // { status: 404, headers: corsHeaders }
+      { status: 404 }
     );
   }
 
@@ -58,12 +60,14 @@ export async function GET(
 
     return NextResponse.json(
       { success: true, data: response },
-      { status: 200, headers: corsHeaders }
+      // { status: 200, headers: corsHeaders }
+      { status: 200 }
     );
   } catch (error) {
     return NextResponse.json(
       { error: true, message: "Something went wrong", data: error },
-      { status: 500, headers: corsHeaders }
+      // { status: 500, headers: corsHeaders }
+      { status: 500 }
     );
   }
 }
