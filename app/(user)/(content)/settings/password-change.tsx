@@ -68,7 +68,7 @@ export default function PasswordChange() {
   };
 
   return (
-    <div className="">
+    <div>
       <label htmlFor="">Password</label>
       <div className="flex flex-col lg:flex-row w-full items-center gap-5">
         <p className="h-[50px] pl-0.5 pt-[1px] flex items-center font-bold text-gray-400 text-2xl w-full">
@@ -102,7 +102,7 @@ export default function PasswordChange() {
                 label="Re-enter new password"
               />
 
-              <div className="">
+              <div>
                 <div className="mt-8 flex justify-center gap-5">
                   <Button
                     type="button"

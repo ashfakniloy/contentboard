@@ -48,12 +48,12 @@ export default async function ApiUrlsPage() {
 
   return (
     <div className="space-y-10">
-      <div className="">
+      <div>
         <p className="text-2xl font-bold mb-2">All Blogs</p>
         <ApiAlert title="GET" path={`${url}/blogs`} isUser={isUser} />
       </div>
 
-      <div className="">
+      <div>
         <p className="text-2xl font-bold mb-2">Single Blog</p>
         <ApiAlert
           title="GET"
@@ -63,17 +63,17 @@ export default async function ApiUrlsPage() {
         />
       </div>
 
-      <div className="">
+      <div>
         <p className="text-2xl font-bold mb-2">Blog Styling</p>
         <CssAlert cssUrl={cssUrl} />
       </div>
 
-      <div className="">
+      <div>
         <p className="text-2xl font-bold mb-2">All Categories</p>
         <ApiAlert title="GET" path={`${url}/categories`} isUser={isUser} />
       </div>
 
-      <div className="">
+      <div>
         <p className="text-2xl font-bold mb-2">Submit Message</p>
         <ApiAlert
           title="POST"

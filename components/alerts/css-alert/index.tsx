@@ -42,8 +42,8 @@ export default function CssAlert({ cssUrl }: { cssUrl: string }) {
   return (
     <Alert>
       <Palette className="h-4 w-4" />
-      <AlertTitle className="">CSS</AlertTitle>
-      <AlertDescription className="">
+      <AlertTitle>CSS</AlertTitle>
+      <AlertDescription>
         <div className="flex items-center justify-between gap-2">
           <div className="w-full lg:w-auto p-1 lg:p-0 overflow-x-auto overflow-y-hidden">
             <code className="rounded bg-muted dark:bg-[#18181B] px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">

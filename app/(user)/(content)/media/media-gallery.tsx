@@ -92,7 +92,7 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
   };
 
   return (
-    <div className="">
+    <div>
       <div className="flex justify-end gap-4">
         {selectedMultipleImages.length > 0 && (
           <Button
@@ -145,7 +145,7 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
               >
                 <button
                   type="button"
-                  className="size-[105px] lg:size-[180px] 2xl:size-[280px] rounded-md bg-gray-100 dark:bg-custom-gray6 flex justify-center items-center"
+                  className="size-[105px] lg:size-[180px] 2xl:size-[280px] rounded-md bg-gray-100 dark:bg-custom-gray4 flex justify-center items-center"
                 >
                   <div className="flex flex-col lg:flex-row items-center gap-1.5 text-sm text-gray-600 dark:text-gray-300">
                     <span>
@@ -159,7 +159,7 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
               <button
                 type="button"
                 disabled
-                className="size-[105px] lg:size-[180px] 2xl:size-[280px] rounded-md bg-gray-100 dark:bg-custom-gray6 flex justify-center items-center disabled:opacity-30 disabled:cursor-not-allowed"
+                className="size-[105px] lg:size-[180px] 2xl:size-[280px] rounded-md bg-gray-100 dark:bg-custom-gray4 flex justify-center items-center disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <div className="flex flex-col lg:flex-row items-center gap-1.5 text-sm text-gray-600 dark:text-gray-300">
                   <span>

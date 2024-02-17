@@ -17,7 +17,7 @@ export default async function UserLayout({
       <UserSidebar logoUrl={logoUrl} />
 
       <div className="lg:flex-1 relative overflow-x-auto">
-        <div className="fixed lg:hidden w-full bg-white dark:bg-custom-gray6 shadow-md px-2 py-4 text-end border-b z-20">
+        <div className="fixed lg:hidden w-full bg-white dark:bg-custom-gray4 shadow-md px-2 py-4 text-end border-b z-20">
           <p className="text-xl font-bold text-primary">{username}</p>
         </div>
         <div className="hidden lg:block lg:absolute lg:top-10 lg:right-7 lg:text-end">

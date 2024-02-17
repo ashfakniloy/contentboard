@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import ContentBoardImage from "@/public/logo-contentboard.png";
+import ContentBoardImage from "@/public/images/logo-contentboard.png";
 
 export default function ContentBoardLogo({
   className,

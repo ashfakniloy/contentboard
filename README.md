@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Contentboard | Blog and contact management dashboard for websites
+
+![Project Screenshot](/public/images/contentboard-cover.webp)
+
+Contentboard is a full-stack blog and contact management dashboard for websites, built with Next.js 14 (app router). This project allows website owners to write blog articles and manage the contact section for their websites by connecting their websites with APIs.
+
+## Live Demo
+
+[Explore the Live Demo](https://contentboard.vercel.app)
+
+## Tech Stack
+
+- Next.js (app router)
+- TypeScript
+- Tailwind CSS
+- Shadcn UI
+- Prisma
+- MongoDB
+- Cloudinary
+- NextAuth
+- Tiptap
+- React Hook Form
+- Zod
+
+## Key Features
+
+- User Registration: Users can register with an email account (no email verification required, for demonstration purposes only).
+- Blog Article Management: Users can create blog articles using a rich text editor and perform editing and deletion actions. Later, users can connect their website with APIs provided by the dashboard to display blogs on their websites along with CSS.
+- Media Upload: Users can upload images with image titles, alt text, and later use those images in their blogs.
+- Blog Analytics: Users can view their website's blog articles unique visitor views with data visualization charts for every year, along with visitor counts from desktop and mobile.
+- Contact Management: Users can manage the contact submission section of their websites using APIs provided by the dashboard, allowing their websites visitors to communicate with them.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js and npm installed.
+- MongoDB database configured.
+- Cloudinary account set up.
+- Other dependencies installed (specified in package.json).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   git clone https://github.com/ashfakniloy/contentboard.git
+   cd contentboard
+   ```
 
-## Learn More
+2. Install dependencies using npm:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Configuration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1.  Create a `.env` file in the project root and set the required environment variables:
 
-## Deploy on Vercel
+    ```bash
+    DATABASE_URL=
+    NEXTAUTH_SECRET=
+    CLOUDINARY_API_KEY=
+    CLOUDINARY_API_SECRET=
+    CLOUDINARY_CLOUD_NAME=
+    NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
+    NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=
+    NEXT_PUBLIC_CLOUDINARY_FOLDER=
+    NEXT_PUBLIC_BASE_URL=
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Setting Up the Database
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1.  To initialize your database schema, run the following command:
+
+    `npx prisma db push`
+
+    This command will create the necessary tables and schema in your MongoDB database based on your Prisma schema definition.
+
+2.  After successfully pushing the database schema, you can apply any pending migrations (if applicable) using:
+
+    `npx prisma migrate dev`
+
+    This command will apply any pending migrations to the database.
+
+### Running the Development Server
+
+1.  Start the development server:
+
+    `npm run dev`
+
+2.  Open your web browser and navigate to [http://localhost:3000](http://localhost:3000/) to access the project locally.
+
+### Building for Production
+
+1.  To build the project for production, use the following command:
+
+    `npm run build`
+
+2.  Start the production server:
+
+    `npm start`
+
+Now, your project is up and running locally with the database set up and ready for use.
+
+## Author
+
+### Ashfak Ahmed Niloy
+
+- Email: ashfakniloy@gmail.com
+- Portfolio: https://niloy.vercel.app
+- GitHub: https://github.com/ashfakniloy

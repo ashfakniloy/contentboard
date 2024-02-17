@@ -132,7 +132,7 @@ export default function EmailChange({ email }: { email: string }) {
         </div>
 
         <NonPortalModal open={showPasswordModal}>
-          <div className="">
+          <div>
             <p className="text-xl font-semibold text-center mb-7">
               Enter your password to change email
             </p>

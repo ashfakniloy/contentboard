@@ -56,10 +56,10 @@ export default function UserSignupForm() {
   };
 
   return (
-    <div className="w-full lg:w-[400px] 2xl:w-[473px] px-5 lg:px-10 py-14 lg:py-[68px] rounded-2xl shadow-lg bg-white dark:bg-custom-gray6">
+    <div className="w-full lg:w-[400px] 2xl:w-[473px] px-5 lg:px-10 py-14 lg:py-[68px] rounded-2xl shadow-lg bg-white dark:bg-custom-gray4">
       <div className=" flex flex-col items-center font-manrope">
         <h1 className="text-2xl font-bold">Create New Account</h1>
-        <p className="">Sign up to continue</p>
+        <p>Sign up to continue</p>
       </div>
 
       <FormProvider {...form}>

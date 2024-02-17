@@ -23,16 +23,6 @@ export function CheckboxField({ name, label }: CheckboxFieldProps) {
         name={name}
         control={control}
         render={({ field }) => (
-          // <Checkbox
-          //   checked={field.value?.includes(label)}
-          //   onCheckedChange={(checked) => {
-          //     return checked
-          //       ? field.onChange([...field.value, label])
-          //       : field.onChange(
-          //           field.value?.filter((value: string) => value !== label)
-          //         );
-          //   }}
-          // />
           <Checkbox
             id={label}
             checked={Array.isArray(field.value) && field.value.includes(label)}

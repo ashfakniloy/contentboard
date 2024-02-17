@@ -44,8 +44,8 @@ export default function ApiAlert({
   return (
     <Alert>
       <Server className="h-4 w-4" />
-      <AlertTitle className="">{title}</AlertTitle>
-      <AlertDescription className="">
+      <AlertTitle>{title}</AlertTitle>
+      <AlertDescription>
         <div className="flex items-center justify-between gap-2">
           <div className="w-full lg:w-auto p-1 lg:p-0 overflow-x-auto overflow-y-hidden">
             <code className="rounded bg-muted dark:bg-[#18181B] px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
@@ -98,7 +98,7 @@ export default function ApiAlert({
               values ={` { `}
               <span className="space-x-2">
                 {values.map((value, i) => (
-                  <span key={i} className="">
+                  <span key={i}>
                     {value.name}: {value.type} {value.optional && "(optional)"}
                     {i < values.length - 1 && ","}
                   </span>
@@ -159,8 +159,8 @@ export default function ApiAlert({
 //   return (
 //     <Alert>
 //       <Server className="h-4 w-4" />
-//       <AlertTitle className="">{title}</AlertTitle>
-//       <AlertDescription className="">
+//       <AlertTitle >{title}</AlertTitle>
+//       <AlertDescription >
 //         <div className="w-full flex items-center justify-between">
 //           <div className="w-full lg:w-auto flex flex-col lg:flex-row items-center gap-3">
 //             <div className="w-full lg:w-auto p-1 lg:p-0 overflow-x-auto overflow-y-hidden">
@@ -238,7 +238,7 @@ export default function ApiAlert({
 //               values ={` { `}
 //               <span className="space-x-2">
 //                 {values.map((value, i) => (
-//                   <span key={i} className="">
+//                   <span key={i} >
 //                     {value.name}: {value.type} {value.optional && "(optional)"}
 //                     {i < values.length - 1 && ","}
 //                   </span>

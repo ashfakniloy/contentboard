@@ -49,7 +49,7 @@ export default async function CategoriesPage({
 
   return (
     <>
-      <div className="">
+      <div>
         <p className="text-2xl font-bold mb-5">Add New Category</p>
         <CategoryForm />
       </div>

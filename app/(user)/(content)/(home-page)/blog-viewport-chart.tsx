@@ -61,7 +61,7 @@ const renderCustomizedLabel = ({
       textAnchor={x > cx ? "start" : "end"}
       dominantBaseline="central"
     >
-      {`${(percent * 100).toFixed(0)}%`}
+      {percent > 0 && `${(percent * 100).toFixed(0)}%`}
     </text>
   );
 };
@@ -79,13 +79,7 @@ const CenterLabel = ({
 
   return (
     <>
-      <text
-        x={cx}
-        y={cy - 35}
-        className=""
-        textAnchor="middle"
-        dominantBaseline="central"
-      >
+      <text x={cx} y={cy - 35} textAnchor="middle" dominantBaseline="central">
         <tspan
           alignmentBaseline="middle"
           className="text-sm fill-gray-700 dark:fill-gray-300"
@@ -93,13 +87,7 @@ const CenterLabel = ({
           Total Views
         </tspan>
       </text>
-      <text
-        x={cx}
-        y={cy - 5}
-        className=""
-        textAnchor="middle"
-        dominantBaseline="central"
-      >
+      <text x={cx} y={cy - 5} textAnchor="middle" dominantBaseline="central">
         <tspan
           alignmentBaseline="middle"
           className="text-3xl fill-black dark:fill-white font-bold"
@@ -109,7 +97,6 @@ const CenterLabel = ({
       </text>
 
       <rect
-        // x={cx - 130}
         y={cy + 15}
         x={cx - 64}
         className="w-[130px] h-[1px] fill-none stroke-gray-400 dark:stroke-gray-500"
@@ -119,7 +106,6 @@ const CenterLabel = ({
           key={i}
           x={cx}
           y={cy + 35 + i * 22}
-          className=""
           textAnchor="middle"
           dominantBaseline="central"
         >
@@ -181,7 +167,6 @@ export default function BlogViewportChart({
       className="w-full"
     >
       <ResponsiveContainer width="100%" height={400}>
-        {/* <PieChart width={800} height={400}> */}
         <PieChart width={800} height={400}>
           {totalSum > 0 ? (
             <Pie

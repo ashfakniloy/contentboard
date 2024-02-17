@@ -1,9 +1,5 @@
 import Lottie from "lottie-react";
-import {
-  AlertDialog,
-  AlertDialogContent,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+import { AlertDialog, AlertDialogContent } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import deleteLottie from "@/public/lottie/delete-lottie.json";
 import { Spinner } from "@/components/spinner";

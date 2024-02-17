@@ -46,7 +46,7 @@ export default async function MessagePage({
   // }
 
   return (
-    <div className="">
+    <div>
       <p className="text-2xl font-bold my-5">All Messages</p>
 
       {messages && (

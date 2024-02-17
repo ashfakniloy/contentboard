@@ -57,7 +57,7 @@ export default async function HomePage({
         </div>
       </div>
 
-      <div className="">
+      <div>
         <p className="text-2xl font-bold mb-4">Messages</p>
         <MessagesCount
           todayCount={todayCount}

@@ -23,7 +23,6 @@ export default function UserSigninForm() {
   const defaultValues = {
     email: "",
     password: "",
-    // remember: false,
   };
 
   const form = useForm<SigninProps>({
@@ -101,10 +100,10 @@ export default function UserSigninForm() {
   };
 
   return (
-    <div className="w-full lg:w-[400px] 2xl:w-[473px] px-5 lg:px-10 py-14 lg:py-[68px] rounded-2xl shadow-lg bg-white dark:bg-custom-gray6">
+    <div className="w-full lg:w-[400px] 2xl:w-[473px] px-5 lg:px-10 py-14 lg:py-[68px] rounded-2xl shadow-lg bg-white dark:bg-custom-gray4">
       <div className="flex flex-col items-center font-manrope">
         <h1 className="text-2xl font-bold">Welcome !</h1>
-        <p className="">Sign in to continue</p>
+        <p>Sign in to continue</p>
       </div>
 
       <FormProvider {...form}>
@@ -116,10 +115,6 @@ export default function UserSigninForm() {
           <EmailField placeholder="Email" name="email" />
           <PasswordField placeholder="Password" name="password" />
           <div className="mt-10">
-            {/* <div className="mb-5">
-              <CheckboxFieldBoolean label="Remember me" name="remember" />
-            </div> */}
-
             <Button
               type="submit"
               size="lg"
@@ -149,7 +144,7 @@ export default function UserSigninForm() {
                   <Spinner className="border-gray-600 border-r-gray-600/30 border-b-gray-600/30" />
                 </span>
               )}
-              Sign in as guest (Igniteweb)
+              Sign in as guest (view demo)
             </Button>
 
             <div className="mt-6">

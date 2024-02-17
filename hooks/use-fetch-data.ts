@@ -7,7 +7,6 @@ export default function useFetchData(url: string) {
 
   useEffect(() => {
     const fetchData = async () => {
-      // unstable_noStore();
       setIsLoading(true);
 
       const res = await fetch(url, { cache: "no-store" });

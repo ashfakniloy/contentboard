@@ -10,27 +10,15 @@ const config = {
   ],
   prefix: "",
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       fontFamily: {
         manrope: ["var(--font-manrope)"],
       },
       colors: {
         "custom-gray": "#F8F8F8",
-        "custom-gray2": "#D9D9D9",
-        "custom-gray3": "#ECECEC",
-        "custom-gray4": "#8B8B8B",
-        "custom-gray5": "#F1F1F1",
-        "custom-gray6": "#171717",
-        "custom-orange": "#FE6D3B",
-        "custom-red": "#431E1E",
-        "custom-red2": "#E31414",
+        "custom-gray2": "#ECECEC",
+        "custom-gray3": "#F1F1F1",
+        "custom-gray4": "#171717",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

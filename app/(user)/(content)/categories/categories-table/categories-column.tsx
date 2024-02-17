@@ -73,7 +73,7 @@ export const categoriesColumn: ColumnDef<Category>[] = [
   {
     id: "actions",
     cell: ({ row }) => (
-      <div className="">
+      <div>
         <CategoryAction row={row} />
       </div>
     ),

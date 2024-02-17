@@ -81,7 +81,7 @@ export default function UserSidebar({
           )}
         </div>
         <div
-          className={`h-full flex flex-col justify-between shadow-xl overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-200 dark:scrollbar-track-gray-800 dark:scrollbar-thumb-gray-600 bg-white dark:bg-custom-gray6`}
+          className={`h-full flex flex-col justify-between shadow-xl overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-200 dark:scrollbar-track-gray-800 dark:scrollbar-thumb-gray-600 bg-white dark:bg-custom-gray4`}
         >
           <div className="w-[160px] mx-auto">
             <div className="py-3 lg:py-7">
@@ -107,7 +107,7 @@ export default function UserSidebar({
 
             <div className="mt-5 space-y-5 text-[17px]">
               {navLinks?.map((navLink, i) => (
-                <div key={i} className="">
+                <div key={i}>
                   <Link href={navLink.link} passHref>
                     <div
                       className={`px-6 py-2 flex justify-between items-center rounded-full font-semibold  ${
@@ -160,7 +160,7 @@ export default function UserSidebar({
 
             <ContentBoardLogo />
             <div className="mt-3 text-xs text-center font-medium text-gray-600 dark:text-gray-400">
-              <p className="">{`© 2024, Contentboard`}</p>
+              <p>{`© 2024, Contentboard`}</p>
               <p>
                 Developed by:{" "}
                 <Link

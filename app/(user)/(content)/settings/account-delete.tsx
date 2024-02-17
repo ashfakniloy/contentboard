@@ -101,7 +101,7 @@ export default function AccountDelete() {
                 label="To verify, type delete my account below"
                 className="bg-custom-gray dark:bg-card"
               />
-              <div className="">
+              <div>
                 <div className="mt-8 flex justify-center gap-5">
                   <Button
                     type="button"

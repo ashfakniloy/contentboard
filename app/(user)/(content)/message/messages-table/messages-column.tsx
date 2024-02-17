@@ -90,7 +90,7 @@ export const messagesColumn: ColumnDef<Message>[] = [
   {
     id: "actions",
     cell: ({ row }) => (
-      <div className="">
+      <div>
         <MessageAction row={row} />
       </div>
     ),

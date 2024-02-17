@@ -27,13 +27,6 @@ export default function SectionChart({
   showAllYear?: boolean;
   className?: string;
 }) {
-  // const currentYear = new Date().getFullYear();
-
-  // const years = Array.from(
-  //   { length: currentYear - firstYear + 1 },
-  //   (_, index) => firstYear + index
-  // );
-
   let years: (number | string)[] = Array.from(
     { length: currentYear - firstYear + 1 },
     (_, index) => firstYear + index
@@ -48,7 +41,7 @@ export default function SectionChart({
   return (
     <div
       className={cn(
-        "bg-white border dark:border-custom-gray6 dark:bg-custom-gray6 p-2 lg:p-6 rounded-lg",
+        "bg-white border dark:border-custom-gray4 dark:bg-custom-gray4 p-2 lg:p-6 rounded-lg",
         className
       )}
     >

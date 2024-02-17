@@ -44,7 +44,7 @@ export const blogsColumn: ColumnDef<Blog>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Author" manualSort />
     ),
-    cell: ({ row }) => <div className="">{row.getValue("author")}</div>,
+    cell: ({ row }) => <div>{row.getValue("author")}</div>,
   },
   {
     accessorKey: "metaDescription",
@@ -65,9 +65,7 @@ export const blogsColumn: ColumnDef<Blog>[] = [
       <DataTableColumnHeader column={column} title="Status" manualSort />
     ),
     cell: ({ row }) => (
-      <div className="">
-        {row.getValue("published") ? "Published" : "Draft"}
-      </div>
+      <div>{row.getValue("published") ? "Published" : "Draft"}</div>
     ),
   },
 
@@ -86,7 +84,7 @@ export const blogsColumn: ColumnDef<Blog>[] = [
   {
     id: "actions",
     cell: ({ row }) => (
-      <div className="">
+      <div>
         <BlogAction row={row} />
       </div>
     ),

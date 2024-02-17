@@ -190,7 +190,7 @@ export default function AddBlogForm({
 
               <div className="relative">
                 <p className="mb-2 font-medium">Featured Image:</p>
-                <div className="relative h-[160px] w-full rounded-md overflow-hidden border border-gray-100 dark:border-custom-gray6 bg-gray-100 dark:bg-custom-gray6 flex justify-center items-center">
+                <div className="relative h-[160px] w-full rounded-md overflow-hidden border border-gray-100 dark:border-custom-gray4 bg-gray-100 dark:bg-custom-gray4 flex justify-center items-center">
                   {!featuredImage?.imageUrl ? (
                     <ImageUploadModal
                       withLibrary

@@ -92,7 +92,7 @@ export function EditCategoryModal({
             className="w-full"
             noValidate
           >
-            <ScrollArea className="">
+            <ScrollArea>
               <div className="max-h-[60dvh] space-y-9 px-9 mb-6">
                 <InputField
                   name="categoryName"

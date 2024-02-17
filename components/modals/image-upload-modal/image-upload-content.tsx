@@ -25,7 +25,7 @@ function ImageUploadContent({
   const [selectedOption, setSelectedOption] = useState(imageOptions[0]);
 
   return (
-    <div className="">
+    <div>
       <button
         type="button"
         className="absolute right-1.5 top-1.5 rounded-full size-7 flex justify-center items-center border-2 border-gray-500 text-gray-500 disabled:pointer-events-none disabled:opacity-50"

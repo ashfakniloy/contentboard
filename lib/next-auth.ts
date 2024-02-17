@@ -14,21 +14,9 @@ export const authOptions: NextAuthOptions = {
       name: "credentials",
       credentials: {},
       authorize: async (credentials) => {
-        // const { email, password, role, remember } =
         const { email, password, role } = credentials as SigninProps & {
           role: string;
         };
-
-        // const parsedValues = signinSchema.safeParse({
-        //   email,
-        //   password,
-        // });
-
-        // if (!parsedValues.success) {
-        //   const { errors } = parsedValues.error;
-        //   console.log("zod validation error", errors);
-        //   throw new Error("Invalid credentials");
-        // }
 
         if (role === "USER") {
           const parsedValues = signinSchema.safeParse({
@@ -63,12 +51,6 @@ export const authOptions: NextAuthOptions = {
             throw new Error("Incorrect Password");
           }
 
-          // if (response.password !== password) {
-          //   throw new Error("Incorrect Password");
-          // }
-
-          // console.log("auth response", response);
-
           const user = {
             id: response.id,
             username: response.username,
@@ -92,17 +74,6 @@ export const authOptions: NextAuthOptions = {
           if (!response) {
             throw new Error("Incorrect Email");
           }
-
-          // const passwordMatched = await bcrypt.compare(
-          //   password,
-          //   response.password
-          // );
-
-          // if (!passwordMatched) {
-          //   throw new Error("Incorrect Password");
-          // }
-
-          // console.log("auth response", response);
 
           const user = {
             id: response.id,

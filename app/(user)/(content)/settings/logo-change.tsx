@@ -6,7 +6,7 @@ import LogoUploadModal from "@/components/modals/logo-upload-modal";
 
 export default function LogoChange({ logoUrl }: { logoUrl: string | null }) {
   return (
-    <div className="">
+    <div>
       <label htmlFor="" className="inline-block mb-4">
         Logo
       </label>

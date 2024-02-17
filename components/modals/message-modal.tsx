@@ -61,20 +61,18 @@ export function MessageModal({
           {messageInfos.map((messageInfo, i) => (
             <div key={i} className="flex items-center gap-5">
               <p className="w-[140px]">{messageInfo.name}:</p>
-              <p className="">{messageInfo.data}</p>
+              <p>{messageInfo.data}</p>
             </div>
           ))}
         </div>
 
         <div className="flex items-center gap-5 text-sm">
           <p className="w-[140px]">Subject:</p>
-          <p className="">
-            {message.subject ? message.subject : "Not provided"}
-          </p>
+          <p>{message.subject ? message.subject : "Not provided"}</p>
         </div>
 
         <div className="mt-2 space-y-1">
-          <p className="">Message:</p>
+          <p>Message:</p>
           <p>{message.message}</p>
         </div>
       </AlertDialogContent>

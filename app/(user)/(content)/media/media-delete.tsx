@@ -40,7 +40,7 @@ export default function MediaDelete({
   };
 
   return (
-    <div className="">
+    <div>
       <Button
         size="sm"
         variant="outline"
