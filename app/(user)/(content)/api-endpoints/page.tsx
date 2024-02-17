@@ -16,7 +16,7 @@ export default async function ApiUrlsPage() {
   const userId = isUser ? session.user.id : "........................";
 
   const url = `${BASE_URL}/api/${userId}`;
-  const cssUrl = `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ashfakniloy/contentboard/public/styles/blog.css" />`;
+  const cssUrl = `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ashfakniloy/contentboard/public/styles/blog.min.css" />`;
 
   const messageValues = [
     {
