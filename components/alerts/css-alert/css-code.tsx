@@ -75,9 +75,10 @@ export const cssCode = `.ContentBoard > * + * {
 
 .ContentBoard pre code {
   font-size: 14px;
-  color: inherit;
-  background-color: #ffcc00;
+  color: #ffcc00;
+  background-color: #0d0d0d;
 }
+
 
 .ContentBoard img {
   height: auto !important;
