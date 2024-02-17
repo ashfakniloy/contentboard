@@ -101,4 +101,14 @@ export const cssCode = `.ContentBoard > * + * {
 .ContentBoard hr {
   margin: 32px 0px;
   border-top: 1px solid #ccc;
+}
+
+.ContentBoard iframe {
+  max-width: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+  .ContentBoard div[data-youtube-video] > iframe {
+    max-height: 250px;
+  }
 }`;
