@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import { SessionProvider } from "@/components/providers/session";
 import { BASE_URL } from "@/config";
 import { Toaster } from "sonner";
@@ -32,6 +33,8 @@ export default function RootLayout({
           <SessionProvider>{children}</SessionProvider>
         </ThemeProvider>
         <Toaster />
+
+        <Analytics />
       </body>
     </html>
   );
