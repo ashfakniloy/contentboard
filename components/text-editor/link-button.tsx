@@ -64,7 +64,6 @@ export default function LinkButton({ editor }: { editor: Editor | null }) {
         </button>
       </DialogTrigger>
 
-      {/* <DialogContent className="px-[35px] py-[40px] relative bg-white border border-gray-300 w-[644px] rounded-lg"> */}
       <DialogContent className="px-[35px] py-[40px]">
         <form className="w-full">
           <label htmlFor="url" className="font-medium">
@@ -74,7 +73,7 @@ export default function LinkButton({ editor }: { editor: Editor | null }) {
             id="url"
             type="url"
             placeholder="Enter URL"
-            className="mt-2 p-3 w-full outline-none bg-white dark:bg-card rounded-md border border-border focus:border-primary"
+            className="mt-2 p-3 w-full outline-none bg-card rounded-md border border-border focus:border-primary"
             name="url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}

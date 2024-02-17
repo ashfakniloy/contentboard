@@ -1,14 +1,15 @@
 import { useEffect } from "react";
-import StarterKit from "@tiptap/starter-kit";
 import { EditorContent, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
 import ListItem from "@tiptap/extension-list-item";
 import TextStyle from "@tiptap/extension-text-style";
 import TextAlign from "@tiptap/extension-text-align";
 import Underline from "@tiptap/extension-underline";
 import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
-import Toolbar from "./toolbar";
+import Youtube from "@tiptap/extension-youtube";
 import ImageResize from "tiptap-extension-resize-image";
+import Toolbar from "./toolbar";
 import "./styles.css";
 
 export default function TextEditor({
@@ -57,6 +58,8 @@ export default function TextEditor({
         allowBase64: true,
         inline: true,
       }),
+
+      Youtube,
     ],
 
     content: ``,

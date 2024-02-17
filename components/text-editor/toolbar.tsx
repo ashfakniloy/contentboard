@@ -1,3 +1,4 @@
+import type { Editor } from "@tiptap/react";
 import { AlignLeft } from "./icons/align-left";
 import { AlignCenter } from "./icons/align-center";
 import { AlignRight } from "./icons/align-right";
@@ -13,7 +14,7 @@ import { PageBreak } from "./icons/page-break";
 import LinkButton from "./link-button";
 import ImageUpload from "./image-upload";
 import TextSelect from "./text-select";
-import type { Editor } from "@tiptap/react";
+import YoutubeVideo from "./youtube-video";
 
 export default function Toolbar({ editor }: { editor: Editor | null }) {
   if (!editor) {
@@ -125,6 +126,8 @@ export default function Toolbar({ editor }: { editor: Editor | null }) {
       </button>
 
       <ImageUpload editor={editor} />
+
+      <YoutubeVideo editor={editor} />
 
       <LinkButton editor={editor} />
 
