@@ -1,9 +1,4 @@
-/* .ContentBoard {
-  overflow-x: auto;
-} */
-
 .ContentBoard > * + * {
-  /* margin-top: 16px; */
   padding-top: 16px;
 }
 
