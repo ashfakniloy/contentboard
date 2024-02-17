@@ -9,7 +9,6 @@ import { MediaProps, mediaSchema } from "@/schemas/media-schema";
 type ImageSubmitFormProps = {
   imageId: string;
   imageUrl: string;
-  // handleImageSubmit: (values: { logo: string }) => Promise<void>;
   handleImageSubmit: (imageValues: MediaProps) => void;
   imageSubmitting?: boolean;
 };
@@ -32,13 +31,6 @@ export default function ImageSubmitForm({
     values: defaultValues,
     resolver: zodResolver(mediaSchema),
   });
-
-  // const {
-  //   reset,
-  //   watch,
-  //   formState: { isSubmitting },
-  //   setValue,
-  // } = form;
 
   const imageOnSubmit = (values: MediaProps) => {
     // console.log("values", values);

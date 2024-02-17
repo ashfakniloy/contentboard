@@ -24,13 +24,7 @@ export function DeleteModal({
   isPending,
 }: DeleteModalProps) {
   return (
-    <AlertDialog
-      open={showDeleteModal}
-      onOpenChange={setShowDeleteModal}
-      // key={categoryInfo.id}
-    >
-      {/* <AlertDialogTrigger asChild>{children}</AlertDialogTrigger> */}
-
+    <AlertDialog open={showDeleteModal} onOpenChange={setShowDeleteModal}>
       <AlertDialogContent className="w-[626px] p-9 flex flex-col items-center bg-card">
         <div className=" flex flex-col items-center">
           <p className="text-lg font-medium">{title}</p>

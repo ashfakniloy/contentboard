@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
   PieChart,
   Pie,
@@ -9,9 +10,8 @@ import {
   ResponsiveContainer,
   Label,
 } from "recharts";
-
 import SectionChart from "@/components/sections/section-chart";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import useWindowSize from "@/hooks/use-window-size";
 
 type ViewsOverviewProps = {
   name: string;
@@ -146,6 +146,8 @@ export default function BlogViewportChart({
   const router = useRouter();
   const pathname = usePathname();
 
+  const windowSize = useWindowSize();
+
   const newParam = new URLSearchParams(searchParams.toString());
 
   const handleYear = (value: string) => {
@@ -179,14 +181,15 @@ export default function BlogViewportChart({
       className="w-full"
     >
       <ResponsiveContainer width="100%" height={400}>
+        {/* <PieChart width={800} height={400}> */}
         <PieChart width={800} height={400}>
           {totalSum > 0 ? (
             <Pie
               data={viewsData}
-              cx={230}
+              cx={windowSize === "sm" ? 190 : 230}
               cy={200}
-              innerRadius={140}
-              outerRadius={190}
+              innerRadius={windowSize === "sm" ? 100 : 140}
+              outerRadius={windowSize === "sm" ? 150 : 190}
               labelLine={false}
               label={renderCustomizedLabel}
               paddingAngle={0}
@@ -214,10 +217,10 @@ export default function BlogViewportChart({
           ) : (
             <Pie
               data={[{ name: "No Data", value: 1 }]}
-              cx={230}
+              cx={windowSize === "sm" ? 190 : 230}
               cy={200}
-              innerRadius={140}
-              outerRadius={190}
+              innerRadius={windowSize === "sm" ? 100 : 140}
+              outerRadius={windowSize === "sm" ? 150 : 190}
               labelLine={false}
               paddingAngle={0}
               dataKey="value"

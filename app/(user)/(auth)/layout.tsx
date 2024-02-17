@@ -6,21 +6,23 @@ export default function UserAuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex bg-custom-gray3 dark:bg-black">
-      <div className="flex-1 flex relative">
-        <div className="flex items-center w-[70%] justify-center z-10 bg-white dark:bg-custom-gray6">
-          <div className="ml-[20%]">
-            <ContentBoardLogo className="w-[400px]" />
-            <p className="mt-1 mr-1 text-primary font-medium text-end text-[16px] italic">
+    <div className="min-h-screen flex flex-col lg:flex-row justify-center bg-custom-gray3 dark:bg-black">
+      <div className="lg:flex-1 lg:flex lg:relative">
+        <div className="absolute lg:static top-10 flex items-center w-full lg:w-[70%] justify-center z-10 lg:bg-white dark:lg:bg-custom-gray6">
+          <div className="lg:ml-[20%]">
+            <ContentBoardLogo className="w-[200px] lg:w-[400px] mx-auto lg:mx-0" />
+            <p className="mt-1 lg:mr-1 text-primary text-center font-medium lg:text-end text-xs lg:text-[16px] italic">
               Write <b>blogs</b> and manage <b>contact</b> for your website
             </p>
           </div>
         </div>
 
-        <div className="absolute inset-y-0 right-[15%] w-[30%] bg-white dark:bg-custom-gray6 -skew-x-[16deg]"></div>
+        <div className="hidden lg:block absolute inset-y-0 right-[15%] w-[30%] bg-white dark:bg-custom-gray6 -skew-x-[16deg]"></div>
       </div>
 
-      <div className="flex-1 flex justify-center items-center">{children}</div>
+      <div className="lg:flex-1 flex justify-center items-center px-3 lg:px-0 my-32 lg:my-0">
+        {children}
+      </div>
     </div>
   );
 }

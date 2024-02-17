@@ -43,9 +43,9 @@ export default async function HomePage({
   // console.log("firstBlogYear", firstBlogYear);
 
   return (
-    <div className="space-y-16">
-      <div className="grid grid-cols-3 gap-5">
-        <div className="col-span-2">
+    <div className="space-y-10 lg:space-y-16">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <div className="lg:col-span-2">
           <BlogViewsChart viewsData={blogViews} firstYear={firstBlogYear} />
         </div>
 
@@ -68,25 +68,3 @@ export default async function HomePage({
     </div>
   );
 }
-
-// import type { Metadata } from "next";
-// import { Suspense } from "react";
-// import MessagesCount from "./messages-count";
-// import MessagesCountSkeleton from "@/components/skeletons/messages-count-sleleton";
-
-// export const metadata: Metadata = {
-//   title: "Dashboard",
-// };
-
-// export default function HomePage() {
-//   return (
-//     <>
-//       <div className="">
-//         <p className="text-2xl font-bold mb-4">Messages</p>
-//         <Suspense fallback={<MessagesCountSkeleton />}>
-//         <MessagesCount />
-//         </Suspense>
-//       </div>
-//     </>
-//   );
-// }

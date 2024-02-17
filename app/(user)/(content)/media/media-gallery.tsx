@@ -96,7 +96,7 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
       <div className="flex justify-end gap-4">
         {selectedMultipleImages.length > 0 && (
           <Button
-            // variant="outline"
+            variant="outline"
             size="sm"
             className="flex items-center gap-2"
             onClick={() => setShowMultipleDeleteModal(true)}
@@ -108,7 +108,7 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
 
         {!isMultipleSelect ? (
           <Button
-            // variant="outline"
+            variant="outline"
             size="sm"
             className="flex items-center gap-2"
             onClick={() => {
@@ -120,7 +120,7 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
           </Button>
         ) : (
           <Button
-            // variant="outline"
+            variant="outline"
             size="sm"
             className="flex items-center gap-2"
             onClick={() => {
@@ -133,9 +133,9 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
           </Button>
         )}
       </div>
-      <div className="mt-5 flex justify-between rounded-xl border border-border">
+      <div className="mt-5 flex justify-between rounded-xl border">
         <ScrollArea className="h-[81vh]">
-          <div className="flex flex-wrap gap-5 2xl:gap-7 p-5 2xl:p-7">
+          <div className="flex flex-wrap gap-5 2xl:gap-7 p-2 lg:p-5 2xl:p-7">
             {!isMultipleSelect ? (
               <ImageUploadModal
                 handleImageSubmit={handleImageSubmit}
@@ -145,9 +145,9 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
               >
                 <button
                   type="button"
-                  className="size-[180px] 2xl:size-[280px] rounded-md bg-gray-100 dark:bg-custom-gray6 flex justify-center items-center"
+                  className="size-[105px] lg:size-[180px] 2xl:size-[280px] rounded-md bg-gray-100 dark:bg-custom-gray6 flex justify-center items-center"
                 >
-                  <div className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-300">
+                  <div className="flex flex-col lg:flex-row items-center gap-1.5 text-sm text-gray-600 dark:text-gray-300">
                     <span>
                       <IconPaperPlus />
                     </span>
@@ -159,9 +159,9 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
               <button
                 type="button"
                 disabled
-                className="size-[180px] 2xl:size-[280px] rounded-md bg-gray-100 dark:bg-custom-gray6 flex justify-center items-center disabled:opacity-30 disabled:cursor-not-allowed"
+                className="size-[105px] lg:size-[180px] 2xl:size-[280px] rounded-md bg-gray-100 dark:bg-custom-gray6 flex justify-center items-center disabled:opacity-30 disabled:cursor-not-allowed"
               >
-                <div className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-300">
+                <div className="flex flex-col lg:flex-row items-center gap-1.5 text-sm text-gray-600 dark:text-gray-300">
                   <span>
                     <IconPaperPlus />
                   </span>
@@ -173,7 +173,7 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
             {medias.map((media) => (
               <div
                 key={media.id}
-                className={`relative size-[180px] 2xl:size-[282px] rounded-md overflow-hidden cursor-pointer`}
+                className={`relative size-[105px] lg:size-[180px] 2xl:size-[282px] rounded-md overflow-hidden cursor-pointer`}
                 onClick={() => handleImageClick(media)}
               >
                 <Image

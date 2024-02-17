@@ -1,19 +1,17 @@
-import { AlertDialog, AlertDialogContent } from "@/components/ui/alert-dialog";
-
-import { Spinner } from "@/components/spinner";
+import type { Category } from "@prisma/client";
+import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
-
 import slugify from "slugify";
-import { InputField } from "@/components/form-fields/input-field";
-import { CategoryProps, categorySchema } from "@/schemas/category-schema";
-import { TextareaField } from "@/components/form-fields/textarea-field";
-import { useEffect } from "react";
-import { Category } from "@prisma/client";
+import { toast } from "sonner";
+import { AlertDialog, AlertDialogContent } from "@/components/ui/alert-dialog";
 import { ScrollArea } from "../ui/scroll-area";
+import { Spinner } from "@/components/spinner";
+import { Button } from "@/components/ui/button";
+import { InputField } from "@/components/form-fields/input-field";
+import { TextareaField } from "@/components/form-fields/textarea-field";
 import { editCategory } from "@/db/user/mutations/edit-category";
+import { CategoryProps, categorySchema } from "@/schemas/category-schema";
 
 type EditCategoryModalProps = {
   category: Category;
@@ -82,12 +80,8 @@ export function EditCategoryModal({
   };
 
   return (
-    <AlertDialog
-      open={showEditModal}
-      onOpenChange={setShowEditModal}
-      // key={categoryInfo.id}
-    >
-      <AlertDialogContent className="bg-card w-[626px] py-9 px-0">
+    <AlertDialog open={showEditModal} onOpenChange={setShowEditModal}>
+      <AlertDialogContent className="bg-card lg:w-[626px] py-9 px-0">
         <p className="text-center text-2xl font-bold">
           Edit {category.categoryName}
         </p>

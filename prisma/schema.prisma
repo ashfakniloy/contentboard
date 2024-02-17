@@ -74,7 +74,6 @@ model BlogView {
 
   visitorId String
   viewport  String
-  country   String?
 
   blog   Blog   @relation(fields: [blogId], references: [id], onDelete: Cascade)
   blogId String @db.ObjectId

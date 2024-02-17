@@ -48,7 +48,7 @@ export default function SectionChart({
   return (
     <div
       className={cn(
-        "bg-white border dark:border-custom-gray6 dark:bg-custom-gray6 p-4 lg:p-6 rounded-lg",
+        "bg-white border dark:border-custom-gray6 dark:bg-custom-gray6 p-2 lg:p-6 rounded-lg",
         className
       )}
     >

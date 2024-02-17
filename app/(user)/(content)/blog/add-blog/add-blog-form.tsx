@@ -98,11 +98,11 @@ export default function AddBlogForm({
       <FormProvider {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex gap-5 border-b border-border"
+          className="flex flex-col lg:flex-row gap-5 lg:border-b lg:border-border"
           noValidate
         >
-          <div className="w-full max-w-[622px] 2xl:max-w-[1170px] min-h-[90vh] border-r border-border pr-5">
-            <div className="mt-5 mb-10 space-y-9">
+          <div className="w-full max-w-[622px] 2xl:max-w-[1170px] min-h-[90vh] lg:border-r lg:border-border lg:pr-5">
+            <div className="lg:mt-5 lg:mb-10 space-y-9">
               <InputField
                 label="Title:"
                 placeholder="Enter blog title"
@@ -114,8 +114,8 @@ export default function AddBlogForm({
               </div>
             </div>
           </div>
-          <div className="mt-5 w-[545px]">
-            <div className="flex justify-end items-center gap-3">
+          <div className="mt-5 lg:w-[545px]">
+            <div className="hidden lg:flex justify-end items-center gap-3">
               <Button
                 type="submit"
                 variant="outline"
@@ -157,7 +157,7 @@ export default function AddBlogForm({
               </Button>
             </div>
 
-            <div className="mt-5 space-y-9">
+            <div className="lg:mt-5 space-y-9">
               <InputField
                 label="Author:"
                 placeholder="Type author name"
@@ -255,6 +255,48 @@ export default function AddBlogForm({
                 placeholder="Enter title to get slug"
                 name="slug"
               />
+
+              <div className="lg:hidden flex justify-between gap-3">
+                <Button
+                  type="submit"
+                  variant="outline"
+                  onClick={() => setValue("published", false)}
+                  disabled={isSubmitting}
+                  className="w-[178px] flex justify-center items-center rounded-full gap-2"
+                >
+                  <span className="size-5">
+                    {isSubmitting ? (
+                      published === false ? (
+                        <Spinner className="size-5 border-gray-500 border-r-gray-500/30 border-b-gray-500/30 dark:border-gray-300 dark:border-r-gray-300/30 dark:border-b-gray-500/30" />
+                      ) : (
+                        <IconDraft />
+                      )
+                    ) : (
+                      <IconDraft />
+                    )}
+                  </span>
+                  Save as Draft
+                </Button>
+                <Button
+                  type="submit"
+                  onClick={() => setValue("published", true)}
+                  disabled={isSubmitting}
+                  className="w-[178px] flex justify-center items-center rounded-full gap-2.5"
+                >
+                  <span className="size-5">
+                    {isSubmitting ? (
+                      published === true ? (
+                        <Spinner className="size-5" />
+                      ) : (
+                        <IconSend />
+                      )
+                    ) : (
+                      <IconSend />
+                    )}
+                  </span>
+                  Publish
+                </Button>
+              </div>
             </div>
           </div>
         </form>

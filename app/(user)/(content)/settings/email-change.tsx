@@ -91,7 +91,7 @@ export default function EmailChange({ email }: { email: string }) {
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} noValidate>
         <label htmlFor="">Email</label>
-        <div className="flex w-full items-center gap-5">
+        <div className="flex flex-col lg:flex-row w-full items-center gap-5">
           {isSelected ? (
             <InputFieldLong name="email" type="email" autoFocus={isSelected} />
           ) : (

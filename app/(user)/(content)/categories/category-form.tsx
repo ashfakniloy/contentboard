@@ -78,7 +78,7 @@ export default function CategoryForm() {
           className="space-y-9 w-full"
           noValidate
         >
-          <div className="flex items-center w-full gap-14">
+          <div className="flex flex-col lg:flex-row items-center w-full gap-9 lg:gap-14">
             <InputField
               name="categoryName"
               label="Category Name:"

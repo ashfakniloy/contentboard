@@ -70,7 +70,7 @@ export default function PasswordChange() {
   return (
     <div className="">
       <label htmlFor="">Password</label>
-      <div className="flex w-full items-center gap-5">
+      <div className="flex flex-col lg:flex-row w-full items-center gap-5">
         <p className="h-[50px] pl-0.5 pt-[1px] flex items-center font-bold text-gray-400 text-2xl w-full">
           ********
         </p>

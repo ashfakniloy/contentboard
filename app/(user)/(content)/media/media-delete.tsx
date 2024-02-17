@@ -41,7 +41,12 @@ export default function MediaDelete({
 
   return (
     <div className="">
-      <Button size="sm" type="button" onClick={() => setShowDeleteModal(true)}>
+      <Button
+        size="sm"
+        variant="outline"
+        type="button"
+        onClick={() => setShowDeleteModal(true)}
+      >
         <Trash2 size={20} className="mr-1.5" />
         Delete
       </Button>

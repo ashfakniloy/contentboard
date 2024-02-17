@@ -16,8 +16,11 @@ export default async function UserLayout({
     <div className="lg:flex">
       <UserSidebar logoUrl={logoUrl} />
 
-      <div className="lg:flex-1 relative overflow-x-auto my-10 mx-2 lg:mx-7">
-        <div className="absolute top-0 right-7 text-end">
+      <div className="lg:flex-1 relative overflow-x-auto">
+        <div className="fixed lg:hidden w-full bg-white dark:bg-custom-gray6 shadow-md px-2 py-4 text-end border-b z-20">
+          <p className="text-xl font-bold text-primary">{username}</p>
+        </div>
+        <div className="hidden lg:block lg:absolute lg:top-10 lg:right-7 lg:text-end">
           <p className="text-xl font-bold text-primary">{username}</p>
           {isGuestUser && (
             <div className="leading-3">
@@ -35,7 +38,9 @@ export default async function UserLayout({
           )}
         </div>
 
-        <main className="min-h-[91.45vh]">{children}</main>
+        <main className="min-h-[91.45vh] my-20 lg:my-10 mx-2 lg:mx-7">
+          {children}
+        </main>
       </div>
     </div>
   );

@@ -12,7 +12,6 @@ export async function GET(
   const { device, ua } = userAgent(request);
   const viewport = device.type === "mobile" ? "mobile" : "desktop";
   const ipAdress = request.headers.get("X-Forwarded-For");
-  const country = request.geo?.country; //will be available only in vercel
 
   const now = new Date();
   const formattedDate = now.toLocaleDateString("en-US", {
@@ -103,7 +102,6 @@ export async function GET(
                 },
                 visitorId: visitorId,
                 viewport: viewport,
-                country: country,
               },
             });
           }

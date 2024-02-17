@@ -27,13 +27,13 @@ export default async function SettingsPage() {
 
   return (
     <div className="space-y-7">
-      <div className="p-7 space-y-4 rounded-lg bg-custom-gray5 dark:bg-custom-gray6">
+      <div className="p-3 lg:p-7 space-y-4 rounded-lg bg-custom-gray5 dark:bg-custom-gray6">
         <LogoChange logoUrl={user.logoUrl} />
         <div className="w-full border border-border" />
         <UsernameChange username={user.username} />
       </div>
 
-      <div className="p-7 space-y-4 rounded-lg bg-custom-gray5 dark:bg-custom-gray6">
+      <div className="p-3 lg:p-7 space-y-4 rounded-lg bg-custom-gray5 dark:bg-custom-gray6">
         <EmailChange email={user.email} />
         <div className="w-full border border-border" />
         <PasswordChange />

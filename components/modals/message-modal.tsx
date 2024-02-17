@@ -1,5 +1,4 @@
 import { AlertDialog, AlertDialogContent } from "@/components/ui/alert-dialog";
-
 import { Message } from "@prisma/client";
 import { AlertDialogCancel } from "@radix-ui/react-alert-dialog";
 import { X } from "lucide-react";

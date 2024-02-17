@@ -23,7 +23,7 @@ export default function MessagesCount({
   ];
 
   return (
-    <div className="flex justify-between items-center gap-5">
+    <div className="flex flex-col lg:flex-row justify-between items-center gap-5">
       {messagesCount.map((message) => (
         <div
           key={message.name}

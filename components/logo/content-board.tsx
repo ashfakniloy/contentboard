@@ -11,7 +11,7 @@ export default function ContentBoardLogo({
     <Image
       src={ContentBoardImage}
       alt="contentboard logo"
-      className={cn("w-[150px]", className)}
+      className={cn(className)}
     />
   );
 }

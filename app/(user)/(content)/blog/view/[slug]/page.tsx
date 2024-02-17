@@ -28,8 +28,8 @@ export default async function BlogViewpage({
   }
 
   return (
-    <div className="flex justify-center">
-      <div className="w-[1000px]">
+    <div className="lg:flex lg:justify-center">
+      <div className="lg:w-[1000px]">
         <BackButton />
         <div className="mt-4 flex flex-wrap items-center gap-3">
           {blog.categories.map((categoty, i) => (
@@ -46,7 +46,7 @@ export default async function BlogViewpage({
 
         <p className="mt-2 capitalize">Author: {blog.author}</p>
 
-        <div className="mt-2 flex flex-col lg:flex-row lg:items-center text-sm gap-2 lg:gap-0">
+        <div className="mt-2 flex flex-col lg:flex-row lg:items-center text-sm">
           <p>
             <span>Published: </span>
             <ClientFormattedDate date={blog.createdAt} />

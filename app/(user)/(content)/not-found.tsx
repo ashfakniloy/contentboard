@@ -14,7 +14,7 @@ export default function UserNotFoundPage() {
       <BackButton />
 
       <div className="min-h-[calc(100vh-200px)] flex justify-center items-center">
-        <p className="text-4xl font-bold">404 | Page not found</p>
+        <p className="text-2xl lg:text-4xl font-bold">404 | Page not found</p>
       </div>
     </>
   );

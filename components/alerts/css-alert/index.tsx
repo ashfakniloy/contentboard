@@ -44,10 +44,12 @@ export default function CssAlert({ cssUrl }: { cssUrl: string }) {
       <Palette className="h-4 w-4" />
       <AlertTitle className="">CSS</AlertTitle>
       <AlertDescription className="">
-        <div className="flex items-center justify-between">
-          <code className="rounded bg-muted dark:bg-[#18181B] px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
-            {cssUrl}
-          </code>
+        <div className="flex items-center justify-between gap-2">
+          <div className="w-full lg:w-auto p-1 lg:p-0 overflow-x-auto overflow-y-hidden">
+            <code className="rounded bg-muted dark:bg-[#18181B] px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+              {cssUrl}
+            </code>
+          </div>
 
           {!isCopied ? (
             <Button
@@ -83,7 +85,7 @@ export default function CssAlert({ cssUrl }: { cssUrl: string }) {
               className="text-xs h-7 flex items-center gap-1"
               onClick={onCSSCopy}
             >
-              <Copy className="h-4 w-4" />
+              <Copy className="size-4" />
               <span>Copy CSS code</span>
             </Button>
           ) : (
@@ -94,7 +96,7 @@ export default function CssAlert({ cssUrl }: { cssUrl: string }) {
               title="Copied to clipboard"
               className="text-xs h-7 flex items-center gap-1 cursor-default hover:bg-transparent"
             >
-              <Check className="h-4 w-4" />
+              <Check className="size-4" />
               <span>Copied to clipboard</span>
             </Button>
           )}

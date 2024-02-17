@@ -35,13 +35,13 @@ function ImageUploadContent({
         <IconX />
       </button>
 
-      <div className="text-2xl font-bold text-center">
+      <div className="text-base lg:text-2xl font-bold text-center">
         <div>
           {!imageUploading && !imageUploaded && (
             <div className="flex justify-center items-center divide-x divide-gray-300 dark:divide-gray-600">
               {withLibrary ? (
                 imageOptions.map((option) => (
-                  <div key={option} className="px-4">
+                  <div key={option} className="px-2 lg:px-4">
                     <button
                       type="button"
                       className={`outline-none ${

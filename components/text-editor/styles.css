@@ -64,7 +64,7 @@
 }
 
 .ProseMirror code {
-  @apply bg-transparent;
+  @apply bg-black;
 }
 
 .ProseMirror pre {
@@ -72,7 +72,7 @@
 }
 
 .ProseMirror pre code {
-  @apply text-sm text-inherit text-yellow-200;
+  @apply text-sm text-yellow-200 bg-[#0d0d0d];
 }
 
 .ProseMirror img {
