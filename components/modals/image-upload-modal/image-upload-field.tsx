@@ -29,6 +29,7 @@ export default function ImageUploadField({
   handleImageSubmit,
   imageSubmitting,
 }: ImageUploadFieldProps) {
+  const imageMaxSize = 800;
   const [image, setImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [dragging, setDragging] = useState(false);
@@ -39,14 +40,12 @@ export default function ImageUploadField({
   const { data: session } = useSession();
   const isUser = session?.user.role === "USER";
 
-  const imageMaxSize = 500;
-
   const handleImageUpload = async () => {
     if (!image) return;
 
     if (image.size > imageMaxSize * 1024) {
-      console.log("Image size exceeds the limit");
-      toast.error("Image size exceeds the limit");
+      console.log(`Image size exceeds the limit, use under ${imageMaxSize}KB`);
+      toast.error(`Image size exceeds the limit, use under ${imageMaxSize}KB`);
       return;
     }
 
@@ -139,8 +138,8 @@ export default function ImageUploadField({
     const droppedImage = e.dataTransfer.files[0];
 
     if (droppedImage.size > imageMaxSize * 1024) {
-      console.log("Image size exceeds the limit");
-      toast.error("Image size exceeds the limit");
+      console.log(`Image size exceeds the limit, use under ${imageMaxSize}KB`);
+      toast.error(`Image size exceeds the limit, use under ${imageMaxSize}KB`);
       return;
     }
 
@@ -166,7 +165,7 @@ export default function ImageUploadField({
             <IconCloudArrow />
           </span>
           <p className="mt-5 text-xl font-medium">Drag and drop asset here</p>
-          <p className="mt-1 text-sm ">{`Image size ( Max ${imageMaxSize}kb)`}</p>
+          <p className="mt-1 text-sm ">{`Image size (Max ${imageMaxSize}kb)`}</p>
 
           <p className="mt-3 font-medium text-black text-lg">Or</p>
 

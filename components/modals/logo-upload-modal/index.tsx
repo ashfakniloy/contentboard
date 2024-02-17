@@ -1,23 +1,18 @@
 import { useEffect, useState } from "react";
-import {
-  AlertDialog,
-  AlertDialogContent,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import Cropper from "react-easy-crop";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { changeLogo } from "@/db/user/mutations/change-logo";
+import { Spinner } from "@/components/spinner";
+import { Slider } from "@/components/ui/slider";
+import { getCroppedImg } from "./canvasUtils";
 import {
   CLOUDINARY_CLOUD_NAME,
   CLOUDINARY_FOLDER,
   CLOUDINARY_UPLOAD_PRESET,
 } from "@/config";
-import { changeLogo } from "@/db/user/mutations/change-logo";
-import { useSession } from "next-auth/react";
-import { Spinner } from "@/components/spinner";
-import { Slider } from "@/components/ui/slider";
-import { getCroppedImg } from "./canvasUtils";
-import { useRouter } from "next/navigation";
 
 // const ORIENTATION_TO_ANGLE = {
 //   '3': 180,
@@ -30,9 +25,10 @@ export default function LogoUploadModal({
 }: {
   children: React.ReactNode;
 }) {
+  const imageMaxSize = 800;
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [crop, setCrop] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
-  const [rotation, setRotation] = useState<number>(0);
+  // const [rotation, setRotation] = useState<number>(0);
   const [zoom, setZoom] = useState<number>(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<null | {
     width: number;
@@ -40,7 +36,6 @@ export default function LogoUploadModal({
     x: number;
     y: number;
   }>(null);
-  // const [croppedImage, setCroppedImage] = useState<string | null>(null);
 
   const [imageUploading, setImageUploading] = useState(false);
   const [showResizeModal, setShowResizeModal] = useState(false);
@@ -57,7 +52,7 @@ export default function LogoUploadModal({
   const closeModal = () => {
     setImageSrc(null);
     setCrop({ x: 0, y: 0 });
-    setRotation(0);
+    // setRotation(0);
     setZoom(1);
     setCroppedAreaPixels(null);
     setShowResizeModal(false);
@@ -87,6 +82,12 @@ export default function LogoUploadModal({
 
     const image = e.target.files[0];
 
+    if (image.size > imageMaxSize * 1024) {
+      console.log(`Image size exceeds the limit, use under ${imageMaxSize}KB`);
+      toast.error(`Image size exceeds the limit, use under ${imageMaxSize}KB`);
+      return;
+    }
+
     const imageDataUrl = await readFile(image);
 
     setImageSrc(imageDataUrl as string);
@@ -103,11 +104,9 @@ export default function LogoUploadModal({
     try {
       const croppedImage = await getCroppedImg(
         imageSrc,
-        croppedAreaPixels,
-        rotation
+        croppedAreaPixels
+        // rotation
       );
-      // console.log('donee', { croppedImage })
-      // setCroppedImage(croppedImage);
 
       if (!croppedImage) return;
 
@@ -130,9 +129,6 @@ export default function LogoUploadModal({
         const data = await response.json();
 
         if (response.ok) {
-          // setImageUrl(data.secure_url);
-          // setImageId(data.public_id);
-          // setImage(null);
           const values = {
             logoId: data.public_id,
             logoUrl: data.secure_url,
@@ -140,7 +136,7 @@ export default function LogoUploadModal({
 
           const result = await changeLogo({ values });
 
-          console.log("result", result);
+          // console.log("result", result);
 
           if (result.success) {
             toast.success(result.success);
@@ -201,16 +197,14 @@ export default function LogoUploadModal({
                 <Cropper
                   image={imageSrc}
                   crop={crop}
-                  rotation={rotation}
+                  // rotation={rotation}
                   zoom={zoom}
-                  // aspect={4 / 3}
                   aspect={160 / 100}
                   onCropChange={setCrop}
-                  onRotationChange={setRotation}
+                  // onRotationChange={setRotation}
                   onCropComplete={onCropComplete}
                   onZoomChange={setZoom}
                   zoomSpeed={0.1}
-                  // objectFit="horizontal-cover"
                 />
               )}
             </div>
@@ -248,26 +242,6 @@ export default function LogoUploadModal({
           </div>
         </div>
       )}
-
-      {/* <AlertDialog open={showResizeModal} onOpenChange={setShowResizeModal}>
-        <AlertDialogContent className=" bg-white w-[700px] h-[500px] p-9">
-          <div className="relative w-full h-full  ">
-            {imageSrc && (
-              <Cropper
-                image={imageSrc}
-                crop={crop}
-                rotation={rotation}
-                zoom={zoom}
-                aspect={4 / 4}
-                onCropChange={setCrop}
-                onRotationChange={setRotation}
-                onCropComplete={onCropComplete}
-                onZoomChange={setZoom}
-              />
-            )}
-          </div>
-        </AlertDialogContent>
-      </AlertDialog> */}
     </>
   );
 }
