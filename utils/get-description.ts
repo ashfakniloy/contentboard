@@ -1,4 +1,4 @@
-import { removeHtmlTags } from "./remove-hmtl-tags";
+import { removeHtmlTags } from "./remove-html-tags";
 // import { removeHtmlEntities } from "./remove-html-entities";
 
 export const getDescription = (

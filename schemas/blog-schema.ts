@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { mediaSchema } from "./media-schema";
-import { removeHtmlTags } from "@/utils/remove-hmtl-tags";
+import { removeHtmlTags } from "@/utils/remove-html-tags";
 
 export const blogSchema = z.object({
   title: z

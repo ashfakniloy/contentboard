@@ -129,7 +129,7 @@ export default function Toolbar({ editor }: { editor: Editor | null }) {
 
       <YoutubeVideo editor={editor} />
 
-      <LinkButton editor={editor} />
+      <LinkButton key={editor?.getAttributes("link").href} editor={editor} />
 
       <button
         type="button"

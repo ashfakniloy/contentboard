@@ -58,8 +58,6 @@ export default function EditBlogForm({
   const published = watch("published");
   const featuredImage = watch("featuredImage");
 
-  // console.log("featuredImage", featuredImage);
-
   useEffect(() => {
     if (title) {
       const slug = slugify(title, { lower: true });
@@ -76,15 +74,13 @@ export default function EditBlogForm({
 
   const onSubmit = async (values: BlogProps) => {
     // console.log("values", values);
-
     const result = await editBlog({ values, blogId: blog.id });
 
     console.log("result", result);
 
     if (result.success) {
       toast.success(result.success);
-
-      router.push("/blog");
+      router.replace(`/blog/view/${result.data.slug}`);
     } else if (result.error) {
       toast.error(result.error);
 

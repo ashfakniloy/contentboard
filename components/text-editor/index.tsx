@@ -70,12 +70,12 @@ export default function TextEditor({
     content: ``,
 
     onUpdate: ({ editor }) => {
-      const html = editor.getHTML();
-      setValue(html);
-
       // const html = editor.getHTML();
-      // const wrappedHtml = `<article className="ProseMirror">${html}</article>`;
-      // setValue(wrappedHtml);;
+      // setValue(html);
+
+      const html = editor.getHTML();
+      const wrappedHtml = `<div className="ContentBoard">${html}</div>`;
+      setValue(wrappedHtml);
     },
   });
 

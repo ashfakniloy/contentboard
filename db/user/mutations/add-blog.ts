@@ -104,7 +104,7 @@ export async function addBlog({ values }: { values: BlogProps }) {
         },
       });
 
-      const response =
+      const responseMedia =
         !imageExist &&
         (await prisma.media.create({
           data: {
@@ -124,15 +124,6 @@ export async function addBlog({ values }: { values: BlogProps }) {
             AND: {
               userId: userId,
             },
-            // AND: [
-            //   {
-            //     imageUrl: {
-            //       in: imagesUrl,
-            //     },
-            //   },
-
-            //   { userId: userId },
-            // ],
           },
         });
 
@@ -147,13 +138,13 @@ export async function addBlog({ values }: { values: BlogProps }) {
           )
           .map((filteredImage) => ({ ...filteredImage, userId }));
 
-        const response =
+        const responseMedias =
           imagesToSubmit.length > 0 &&
           (await prisma.media.createMany({
             data: imagesToSubmit,
           }));
 
-        console.log("response images", response);
+        console.log("response media", responseMedias);
       }
     }
 

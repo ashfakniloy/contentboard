@@ -30,7 +30,19 @@ export default async function BlogViewpage({
   return (
     <div className="lg:flex lg:justify-center">
       <div className="lg:w-[1000px]">
-        <BackButton />
+        <div className="flex justify-between">
+          <BackButton />
+          {blog.published ? (
+            <span className="px-3 py-1 rounded-full text-sm font-bold text-white bg-blue-600">
+              Published
+            </span>
+          ) : (
+            <span className="px-3 py-1 rounded-full text-sm font-bold text-white bg-red-600">
+              Draft
+            </span>
+          )}
+        </div>
+
         <div className="mt-4 flex flex-wrap items-center gap-3">
           {blog.categories.map((categoty, i) => (
             <span
@@ -72,7 +84,7 @@ export default async function BlogViewpage({
           />
         </div>
 
-        <div className="mt-6 ContentBoard">{parser(blog.body)}</div>
+        <div className="mt-6">{parser(blog.body)}</div>
       </div>
     </div>
   );

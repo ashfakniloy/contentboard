@@ -79,8 +79,7 @@ export default function AddBlogForm({
 
     if (result.success) {
       toast.success(result.success);
-
-      router.push("/blog");
+      router.replace(`/blog/view/${result.data.slug}`);
     } else if (result.error) {
       toast.error(result.error);
 
