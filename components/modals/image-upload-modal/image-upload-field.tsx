@@ -151,7 +151,7 @@ export default function ImageUploadField({
       {!imagePreview ? (
         <div
           className={`h-full flex flex-col justify-center items-center rounded-xl border-2 border-dashed
-            text-gray-300 dark:text-gray-600 ${
+            text-gray-300 dark:text-gray-500 ${
               dragging
                 ? "border-blue-500"
                 : "border-gray-300 dark:border-gray-700"
@@ -167,7 +167,9 @@ export default function ImageUploadField({
           <p className="mt-5 text-xl font-medium">Drag and drop asset here</p>
           <p className="mt-1 text-sm ">{`Image size (Max ${imageMaxSize}kb)`}</p>
 
-          <p className="mt-3 font-medium text-black text-lg">Or</p>
+          <p className="mt-3 font-medium text-lg text-black dark:text-gray-200">
+            Or
+          </p>
 
           <input
             type="file"
@@ -179,7 +181,7 @@ export default function ImageUploadField({
 
           <label
             htmlFor="image"
-            className="mt-3 px-4 py-2 rounded-full w-[250px] flex justify-center border border-primary bg-primary text-white disabled:pointer-events-none disabled:opacity-50 cursor-pointer"
+            className="mt-3 px-4 py-2 rounded-full w-[250px] flex justify-center border border-primary bg-primary hover:bg-primary/90 text-white transition-colors disabled:pointer-events-none disabled:opacity-50 cursor-pointer"
           >
             Browse
           </label>
