@@ -75,7 +75,7 @@ export default function CssAlert({ cssUrl }: { cssUrl: string }) {
         </div>
 
         <div className="flex items-center gap-2">
-          <p className="font-medium">Or - </p>
+          <p className="font-medium">Or customize as your own - </p>
           {!isCodeCopied ? (
             <Button
               type="button"
@@ -100,16 +100,6 @@ export default function CssAlert({ cssUrl }: { cssUrl: string }) {
               <span>Copied to clipboard</span>
             </Button>
           )}
-        </div>
-
-        <div className="mt-1 flex items-center gap-1.5">
-          <Info size={16} className="text-gray-500" />
-          <p className="text-sm font-semibold">
-            {`Blog's body root className: `}
-            <code className="rounded bg-muted dark:bg-[#18181B] px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
-              ContentBoard
-            </code>
-          </p>
         </div>
 
         <div className="mt-1 flex items-center gap-1.5">
