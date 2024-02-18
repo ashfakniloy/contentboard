@@ -24,6 +24,11 @@ export default function TextEditor({
       //  Link.configure({
       //   openOnClick: false,
       // }),
+      // Link.extend({
+      //   exitable: true,
+      // }).configure({
+      //   openOnClick: false,
+      // }),
       Link.extend({
         inclusive: false,
       }).configure({

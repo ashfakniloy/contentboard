@@ -6,8 +6,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
 import { ClientFormattedDate } from "@/components/formats/client-formatted-date";
 import { BlogAction } from "./blog-action";
+import { BlogQueryProps } from "@/db/user/queries/get-blogs";
 
-export const blogsColumn: ColumnDef<Blog>[] = [
+export const blogsColumn: ColumnDef<BlogQueryProps>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -60,6 +61,19 @@ export const blogsColumn: ColumnDef<Blog>[] = [
     ),
   },
   {
+    accessorKey: "_count.blogViews",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Views" manualSort />
+    ),
+    cell: ({
+      row: {
+        original: {
+          _count: { blogViews },
+        },
+      },
+    }) => <div>{blogViews}</div>,
+  },
+  {
     accessorKey: "published",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Status" manualSort />
@@ -68,7 +82,6 @@ export const blogsColumn: ColumnDef<Blog>[] = [
       <div>{row.getValue("published") ? "Published" : "Draft"}</div>
     ),
   },
-
   {
     accessorKey: "createdAt",
     header: ({ column }) => (

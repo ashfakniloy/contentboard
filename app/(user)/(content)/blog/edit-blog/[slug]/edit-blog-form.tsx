@@ -17,6 +17,7 @@ import { TextEditorField } from "@/components/form-fields/text-editor-field";
 import ImageUploadModal from "@/components/modals/image-upload-modal";
 import { BlogProps, blogSchema } from "@/schemas/blog-schema";
 import { editBlog } from "@/db/user/mutations/edit-blog";
+import { getDescription } from "@/utils/get-description";
 
 export default function EditBlogForm({
   categories,
@@ -53,6 +54,7 @@ export default function EditBlogForm({
   } = form;
 
   const title = watch("title");
+  const body = watch("body");
   const published = watch("published");
   const featuredImage = watch("featuredImage");
 
@@ -64,6 +66,13 @@ export default function EditBlogForm({
       setValue("slug", slug);
     }
   }, [title, setValue]);
+
+  useEffect(() => {
+    if (body) {
+      const shortDescription = getDescription(body, 70, 160);
+      setValue("metaDescription", shortDescription);
+    }
+  }, [body, setValue]);
 
   const onSubmit = async (values: BlogProps) => {
     // console.log("values", values);

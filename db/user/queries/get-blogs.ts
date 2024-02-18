@@ -1,3 +1,4 @@
+import type { Prisma } from "@prisma/client";
 import { PER_PAGE } from "@/config";
 import { prisma } from "@/lib/prisma";
 import escapeStringRegexp from "escape-string-regexp";
@@ -35,6 +36,12 @@ export async function getBlogs({
         return {
           metaDescription: orderBy,
         };
+      case "views":
+        return {
+          blogViews: {
+            _count: orderBy,
+          },
+        };
       case "status":
         return {
           published: orderBy,
@@ -65,6 +72,29 @@ export async function getBlogs({
         mode: "insensitive",
       },
     },
+    select: {
+      id: true,
+      slug: true,
+      title: true,
+      author: true,
+      metaDescription: true,
+      published: true,
+      createdAt: true,
+      updatedAt: true,
+      categories: true,
+      _count: {
+        select: {
+          blogViews: true,
+        },
+      },
+      featuredImage: {
+        select: {
+          imageUrl: true,
+          imageTitle: true,
+          altText: true,
+        },
+      },
+    },
 
     take: take,
     skip: skip,
@@ -84,3 +114,7 @@ export async function getBlogs({
 
   return { blogs, blogsCount };
 }
+
+export type BlogQueryProps = Prisma.PromiseReturnType<
+  typeof getBlogs
+>["blogs"][number];
