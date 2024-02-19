@@ -2,7 +2,7 @@
 
 ![Project Screenshot](/public/images/contentboard-cover.webp)
 
-Contentboard is a full-stack blog and contact management dashboard for websites, built with Next.js 14 (app router). This project allows website owners to write blog articles and manage the contact section for their websites by connecting their websites with APIs.
+Contentboard is a full-stack blog and contact management dashboard for websites, built with Next.js 14 (app router). This project allows website owners to write blog articles for their websites and manage the contact section via provided APIs.
 
 ## Live Demo
 
