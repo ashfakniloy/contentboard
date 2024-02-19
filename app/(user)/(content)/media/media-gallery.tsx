@@ -135,7 +135,7 @@ export default function MediaGallery({ medias }: { medias: Media[] }) {
       </div>
       <div className="mt-5 flex justify-between rounded-xl border">
         <ScrollArea className="h-[81vh]">
-          <div className="flex flex-wrap gap-5 2xl:gap-7 p-2 lg:p-5 2xl:p-7">
+          <div className="flex justify-center lg:justify-start flex-wrap gap-5 2xl:gap-7 p-2 lg:p-5 2xl:p-7">
             {!isMultipleSelect ? (
               <ImageUploadModal
                 handleImageSubmit={handleImageSubmit}
