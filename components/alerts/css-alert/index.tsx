@@ -75,7 +75,9 @@ export default function CssAlert({ cssUrl }: { cssUrl: string }) {
         </div>
 
         <div className="flex items-center gap-2">
-          <p className="font-medium">Or customize as your own - </p>
+          <p className="font-medium text-xs lg:text-sm">
+            Or customize as your own -
+          </p>
           {!isCodeCopied ? (
             <Button
               type="button"
@@ -102,8 +104,10 @@ export default function CssAlert({ cssUrl }: { cssUrl: string }) {
           )}
         </div>
 
-        <div className="mt-1 flex items-center gap-1.5">
-          <Info size={16} className="text-gray-500" />
+        <div className="mt-1 flex lg:items-center gap-1.5">
+          <div className="mt-[3px] lg:mt-0">
+            <Info className="text-gray-500 size-[16px]" />
+          </div>
           <p className="text-sm font-semibold">{`For rendering blog's body, use an HTML parser`}</p>
         </div>
       </AlertDescription>

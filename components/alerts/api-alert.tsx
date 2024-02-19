@@ -85,7 +85,7 @@ export default function ApiAlert({
 
         {info && (
           <div className="mt-1 flex lg:items-center gap-1.5">
-            <div className="mt-0.5 lg:mt-0">
+            <div className="mt-[3px] lg:mt-0">
               <Info className="text-gray-500 size-[16px]" />
             </div>
             <p className="text-sm font-semibold">{info}</p>

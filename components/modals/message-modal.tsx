@@ -3,6 +3,7 @@ import { Message } from "@prisma/client";
 import { AlertDialogCancel } from "@radix-ui/react-alert-dialog";
 import { X } from "lucide-react";
 import { ClientFormattedDate } from "../formats/client-formatted-date";
+import { ScrollArea } from "../ui/scroll-area";
 
 type MessageModalProps = {
   showMessageModal: boolean;
@@ -52,7 +53,7 @@ export function MessageModal({
 
   return (
     <AlertDialog open={showMessageModal} onOpenChange={setShowMessageModal}>
-      <AlertDialogContent className="bg-card min-w-[700px] p-10">
+      <AlertDialogContent className="bg-card lg:min-w-[700px] p-4 lg:p-10">
         <AlertDialogCancel className="absolute top-2 right-2">
           <X size={25} />
         </AlertDialogCancel>
@@ -73,7 +74,9 @@ export function MessageModal({
 
         <div className="mt-2 space-y-1">
           <p>Message:</p>
-          <p>{message.message}</p>
+          <ScrollArea>
+            <p className="max-h-[300px] lg:max-h-[300px]">{message.message}</p>
+          </ScrollArea>
         </div>
       </AlertDialogContent>
     </AlertDialog>
