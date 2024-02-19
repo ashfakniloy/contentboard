@@ -70,15 +70,14 @@ export default function UserSidebar({
           showSidebar ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div
-          className="lg:hidden absolute top-4 right-[-38px]"
-          onClick={() => setShowSidebar(!showSidebar)}
-        >
-          {showSidebar ? (
-            <ChevronLeftCircle className="text-white size-[30px]" />
-          ) : (
-            <Menu className=" size-[30px]" />
-          )}
+        <div className="lg:hidden absolute top-0 right-[-38px] h-[70px] flex items-center">
+          <button type="button" onClick={() => setShowSidebar(!showSidebar)}>
+            {showSidebar ? (
+              <ChevronLeftCircle className="text-white size-[30px]" />
+            ) : (
+              <Menu className=" size-[30px]" />
+            )}
+          </button>
         </div>
         <div
           className={`h-full flex flex-col justify-between shadow-xl overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-200 dark:scrollbar-track-gray-800 dark:scrollbar-thumb-gray-600 bg-white dark:bg-custom-gray4`}

@@ -140,11 +140,17 @@ export default function UserSigninForm() {
               disabled={isSubmitting || guestIsSubmitting}
             >
               {guestIsSubmitting && (
+                <span className="absolute flex items-center left-20 2xl:left-28">
+                  <Spinner className="border-gray-600 border-r-gray-600/30 border-b-gray-600/30" />
+                </span>
+              )}
+              View demo
+              {/* {guestIsSubmitting && (
                 <span className="absolute flex items-center left-4 lg:left-24 2xl:left-12">
                   <Spinner className="border-gray-600 border-r-gray-600/30 border-b-gray-600/30" />
                 </span>
               )}
-              Sign in as guest (view demo)
+              View demo (sign in as guest) */}
             </Button>
 
             <div className="mt-6">

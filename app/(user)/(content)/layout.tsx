@@ -17,28 +17,43 @@ export default async function UserLayout({
       <UserSidebar logoUrl={logoUrl} />
 
       <div className="lg:flex-1 relative overflow-x-auto">
-        <div className="fixed lg:hidden w-full bg-white dark:bg-custom-gray4 shadow-md px-2 py-4 text-end border-b z-20">
-          <p className="text-xl font-bold text-primary">{username}</p>
+        <div className="fixed lg:hidden w-full bg-white dark:bg-custom-gray4 shadow-md px-2 h-[70px] flex flex-col justify-center text-end leading-none border-b z-20">
+          <div className="">
+            <p className="text-xl font-bold text-primary">{username}</p>
+            {isGuestUser && (
+              <div className="">
+                <Link
+                  href="https://igniteweb.vercel.app"
+                  target="_blank"
+                  className=" text-sm text-blue-500 hover:text-blue-900 dark:hover:text-blue-300 transition-colors duration-200"
+                >
+                  Visit website
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
-        <div className="hidden lg:block lg:absolute lg:top-10 lg:right-7 lg:text-end">
-          <p className="text-xl font-bold text-primary">{username}</p>
-          {isGuestUser && (
-            <div className="leading-3">
-              <p className="text-xs font-medium">
-                {`Signed in as guest. Limited access (view only)`}
-              </p>
-              <Link
-                href="https://igniteweb.vercel.app"
-                target="_blank"
-                className="text-sm text-blue-500 hover:text-blue-900 dark:hover:text-blue-300 transition-colors duration-200"
-              >
-                Visit website
-              </Link>
-            </div>
-          )}
+        <div className="hidden lg:flex flex-col justify-center lg:absolute lg:h-[108px] lg:right-7 lg:text-end">
+          <div className="leading-none">
+            <p className="text-xl font-bold text-primary">{username}</p>
+            {isGuestUser && (
+              <div className="">
+                <Link
+                  href="https://igniteweb.vercel.app"
+                  target="_blank"
+                  className="text-sm text-blue-500 hover:text-blue-900 dark:hover:text-blue-300 transition-colors duration-200"
+                >
+                  Visit website
+                </Link>
+                <p className="text-xs font-medium">
+                  {`Demo mode. Limited access (view only)`}
+                </p>
+              </div>
+            )}
+          </div>
         </div>
 
-        <main className="min-h-[91.45vh] my-20 lg:my-10 mx-2 lg:mx-7">
+        <main className="min-h-[91.45vh] mt-24 mb-10 lg:my-10 mx-2 lg:mx-7">
           {children}
         </main>
       </div>

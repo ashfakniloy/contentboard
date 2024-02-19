@@ -54,7 +54,7 @@ export const messagesColumn: ColumnDef<Message>[] = [
       <DataTableColumnHeader column={column} title="Phone number" manualSort />
     ),
     cell: ({ row }) => (
-      <div className="w-[200px]">{row.getValue("phoneNumber")}</div>
+      <div className="w-[170px]">{row.getValue("phoneNumber")}</div>
     ),
   },
   {
