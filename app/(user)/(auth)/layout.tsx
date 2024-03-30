@@ -11,7 +11,7 @@ export default function UserAuthLayout({
         <div className="absolute lg:static top-10 flex items-center w-full lg:w-[70%] justify-center z-10 lg:bg-white dark:lg:bg-custom-gray4">
           <div className="lg:ml-[20%]">
             <ContentBoardLogo className="w-[200px] lg:w-[400px] mx-auto lg:mx-0" />
-            <p className="mt-1 lg:mr-1 text-primary text-center font-medium lg:text-end text-xs lg:text-[16px] italic">
+            <p className="mt-1 lg:mr-1 text-primary text-center font-medium lg:text-end text-xs lg:text-sm 2xl:text-base italic">
               Write <b>blogs</b> and manage <b>contact</b> for your website
             </p>
           </div>

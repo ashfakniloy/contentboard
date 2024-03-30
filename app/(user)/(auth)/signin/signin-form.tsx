@@ -129,28 +129,29 @@ export default function UserSigninForm() {
               Sign in
             </Button>
 
-            <div className="border-b border-border my-6"></div>
+            <div className="my-4 flex justify-between items-center">
+              <hr className="w-full" />
+              <p className="mx-3 text-sm font-medium">Or</p>
+              <hr className="w-full" />
+            </div>
+
+            <p className="mb-2 text-center text-[15px] font-medium ">
+              Sign in as guest
+            </p>
 
             <Button
               type="button"
-              variant="outline"
               size="lg"
-              className="relative w-full bg-transparent"
+              className="relative w-full bg-violet-500 hover:bg-violet-500/90"
               onClick={handleGuestSignin}
               disabled={isSubmitting || guestIsSubmitting}
             >
               {guestIsSubmitting && (
                 <span className="absolute flex items-center left-20 2xl:left-28">
-                  <Spinner className="border-gray-600 border-r-gray-600/30 border-b-gray-600/30" />
+                  <Spinner />
                 </span>
               )}
               View demo
-              {/* {guestIsSubmitting && (
-                <span className="absolute flex items-center left-4 lg:left-24 2xl:left-12">
-                  <Spinner className="border-gray-600 border-r-gray-600/30 border-b-gray-600/30" />
-                </span>
-              )}
-              View demo (sign in as guest) */}
             </Button>
 
             <div className="mt-6">
